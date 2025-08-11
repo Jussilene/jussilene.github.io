@@ -132,3 +132,10 @@ body {
   background: #fff;
   color: #000;
 }
+
+/* ====== ESPAÇAMENTO ENTRE PARÁGRAFOS SOBRE E EXPERIÊNCIA ====== */
+.about p,
+#experiencia p {
+  margin-bottom: 1rem; /* espaço de 16px entre parágrafos */
+  line-height: 1.6;    /* aumenta a altura da linha pra leitura ficar mais confortável */
+}
