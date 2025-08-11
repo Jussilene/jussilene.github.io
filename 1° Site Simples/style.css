@@ -1,0 +1,60 @@
+/* =======================================================
+   style.css — apenas AJUSTES RESPONSIVOS (sem trocar cores)
+   ======================================================= */
+
+/* Utilidades seguras (não alteram cor ou layout do desktop) */
+img, svg, video { max-width: 100%; height: auto; display: block; }
+
+/* Evita que âncoras fiquem escondidas atrás do topo fixo */
+section[id] { scroll-margin-top: 80px; }
+
+/* Reduz animações para quem preferir */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* -------- Breakpoints -------- */
+
+/* 1) Até 1200px: um pouco mais de respiro nas laterais */
+@media (max-width: 1200px) {
+  .container { padding-left: 20px; padding-right: 20px; }
+}
+
+/* 2) Até 960px: pilhar colunas grandes em uma, centralizar avatar
+      e tornar “Contato” coluna única. Mantém o visual do desktop. */
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: 1fr; text-align: center; }
+  .avatar { margin: 0 auto; }
+  .contact { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* 3) Até 720px: cartões do topo (“Experiência / Stack / Disponível”)
+      e grades viram 1 coluna para caber bonito. */
+@media (max-width: 720px) {
+  .hero-highlights { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: 1fr; }
+}
+
+/* 4) Até 640px: timeline de experiência/formação em 1 coluna */
+@media (max-width: 640px) {
+  .job { grid-template-columns: 1fr; }
+}
+
+/* 5) Até 560px: CTAs mais amigáveis ao toque e textos um pouquinho menores */
+@media (max-width: 560px) {
+  .cta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .btn { width: 100%; justify-content: center; }
+  .section-title { font-size: 22px; }
+  .section-sub { font-size: 15px; }
+}
+
+/* 6) Muito pequeno (até 420px): pequenos refinamentos de tipografia */
+@media (max-width: 420px) {
+  .badge { font-size: 11px; }
+  .chip { font-size: 13px; }
+}
