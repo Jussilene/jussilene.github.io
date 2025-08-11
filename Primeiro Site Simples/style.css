@@ -1,20 +1,15 @@
-/* ========================
-   Estilos Gerais
-======================== */
+/* ====== RESET BÁSICO ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #0f1624;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0d1117;
   color: #fff;
-}
-
-h1, h2, h3 {
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
+  line-height: 1.6;
 }
 
 .container {
@@ -23,281 +18,117 @@ a {
   margin: auto;
 }
 
+/* ====== TÍTULOS ====== */
 .section-title {
-  font-size: 28px;
-  margin-bottom: 10px;
+  font-size: 2rem;
   text-align: center;
+  margin-bottom: 0.5rem;
 }
 
 .section-sub {
   text-align: center;
-  color: #bbb;
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  color: #ccc;
 }
 
-/* ========================
-   Seção Sobre
-======================== */
-.about p {
-  margin-bottom: 15px; /* Espaço entre parágrafos */
-  line-height: 1.6;    /* Melhor leitura */
+/* ====== GRID ====== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
 }
 
-/* ========================
-   Seção Experiência
-======================== */
-#experiencia p {
-  margin-bottom: 10px;
-  line-height: 1.6;
+/* ====== CARD PROJETO ====== */
+.card.project {
+  background: #161b22;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
-#experiencia ul {
-  margin-top: 8px;
-  padding-left: 20px;
+.card.project:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
 }
 
-#experiencia li {
-  margin-bottom: 5px;
-}
-
-/* Ajuste para mobile */
-@media (max-width: 768px) {
-  #experiencia h3 {
-    font-size: 18px;
-  }
-  #experiencia p, 
-  #experiencia li {
-    font-size: 14px;
-  }
-}
-
-/* ========================
-/* ========================
-/* ========================
-   Projetos
-======================== */
-
-/* Container do projeto */
 .projeto-card {
   position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  background: #0f1624;
 }
 
-/* Imagem do projeto */
 .projeto-card img {
-  width: 100%;
   display: block;
-  border-radius: 12px 12px 0 0;
+  width: 100%;
+  height: auto;
 }
 
-/* Rótulo "EM BREVE" estilizado */
+/* ====== LABEL EM BREVE ====== */
 .projeto-card .em-breve {
   position: absolute;
   top: 12px;
   left: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 999px;
+  line-height: 1;
+  white-space: nowrap;
   background: linear-gradient(135deg, #ff6a00, #ff3b3b);
-  color: white;
-  font-size: 14px;
+  color: #fff;
+  font-size: 12px;
   font-weight: bold;
-  padding: 6px 14px;
-  border-radius: 30px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-  text-transform: uppercase;
   letter-spacing: 1px;
-  animation: pulse 1.5s infinite;
+  box-shadow: 0 4px 10px rgba(0,0,0,.25);
   z-index: 10;
+  animation: pulse 1.5s infinite;
 }
 
-/* Animação suave para o "EM BREVE" */
 @keyframes pulse {
   0% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.05); opacity: 0.85; }
   100% { transform: scale(1); opacity: 1; }
 }
 
-/* Conteúdo do projeto */
+/* ====== CONTEÚDO DO CARD ====== */
 .projeto-card .conteudo {
-  padding: 15px;
-  color: white;
+  padding: 1rem;
 }
 
 .projeto-card h3 {
-  margin-bottom: 5px;
-}
-
-.projeto-card p {
-  font-size: 14px;
-  color: #bbb;
-}
-
-/* Botões do projeto */
-.projeto-card .botoes {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.projeto-card .botoes a {
-  border: 1px solid white;
-  padding: 6px 12px;
-  border-radius: 6px;
-  text-decoration: none;
-  color: white;
-  font-size: 14px;
-  transition: background 0.3s, color 0.3s;
-}
-
-.projeto-card .botoes a:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ff3b3b;
-}
-
-
-}
-=======
-/* ========================
-   Estilos Gerais
-======================== */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #0f1624;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
   color: #fff;
 }
 
-h1, h2, h3 {
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.section-title {
-  font-size: 28px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.section-sub {
-  text-align: center;
-  color: #bbb;
-  margin-bottom: 30px;
-}
-
-/* ========================
-   Seção Sobre
-======================== */
-.about p {
-  margin-bottom: 15px; /* Espaço entre parágrafos */
-  line-height: 1.6;    /* Melhor leitura */
-}
-
-/* ========================
-   Seção Experiência
-======================== */
-#experiencia p {
-  margin-bottom: 10px;
-  line-height: 1.6;
-}
-
-#experiencia ul {
-  margin-top: 8px;
-  padding-left: 20px;
-}
-
-#experiencia li {
-  margin-bottom: 5px;
-}
-
-/* Ajuste para mobile */
-@media (max-width: 768px) {
-  #experiencia h3 {
-    font-size: 18px;
-  }
-  #experiencia p, 
-  #experiencia li {
-    font-size: 14px;
-  }
-}
-
-/* ========================
-   Projetos
-======================== */
-
-/* Container do projeto */
-.projeto-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-}
-
-/* Imagem do projeto */
-.projeto-card img {
-  width: 100%;
-  display: block;
-  border-radius: 12px 12px 0 0;
-}
-
-/* Rótulo "EM BREVE" */
-.projeto-card .em-breve {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #ff3b3b;
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 4px 8px;
-  border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  text-transform: uppercase;
-  z-index: 10;
-}
-
-/* Conteúdo do projeto */
-.projeto-card .conteudo {
-  padding: 15px;
-  background: #0f1624;
-  color: white;
-}
-
-.projeto-card h3 {
-  margin-bottom: 5px;
-}
-
 .projeto-card p {
-  font-size: 14px;
-  color: #bbb;
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 1rem;
 }
 
-/* Botões do projeto */
+/* ====== BOTÕES ====== */
 .projeto-card .botoes {
   display: flex;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 0.5rem;
 }
 
 .projeto-card .botoes a {
-  border: 1px solid white;
-  padding: 6px 12px;
+  display: inline-block;
+  padding: 0.5rem 1rem;
   border-radius: 6px;
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
   text-decoration: none;
-  color: white;
-  font-size: 14px;
-  transition: background 0.3s;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
 }
 
 .projeto-card .botoes a:hover {
-  background: rgba(255,255,255,0.1);
+  background: #fff;
+  color: #000;
 }
-
