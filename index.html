@@ -400,12 +400,23 @@
         <div>
           <h2 class="section-title">Contato</h2>
           <p class="section-sub">Vamos conversar sobre oportunidades, freelas ou colaborações.</p>
-          <form class="form" action="mailto:jussilene.valim@gmail.com" method="post" enctype="text/plain">
-            <input type="text" name="nome" placeholder="Seu nome" required />
-            <input type="email" name="email" placeholder="Seu e-mail" required />
-            <textarea name="mensagem" placeholder="Escreva sua mensagem" required></textarea>
-            <button class="btn primary" type="submit">Enviar</button>
+          <form action="https://formsubmit.co/jussilene.valim@gmail.com" method="POST">
+  <!-- anti-spam -->
+              <input type="text" name="_honey" style="display:none">
+              <input type="hidden" name="_captcha" value="false">
+
+  <!-- configurações do email -->
+              <input type="hidden" name="_subject" value="Contato via Portfólio – Jussilene">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_next" value="https://jussilene.github.io/?enviado=1#contato">
+
+              <input type="text"   name="nome"     placeholder="Seu nome"   required autocomplete="name">
+              <input type="email"  name="email"    placeholder="Seu e-mail" required autocomplete="email">
+              <textarea name="mensagem" placeholder="Escreva sua mensagem" required rows="6"></textarea>
+
+             <button type="submit" class="btn primary">Enviar</button>
           </form>
+
           <p class="muted">Prefere WhatsApp? <a href="https://wa.me/5541998119767" target="_blank" rel="noopener">Clique aqui</a>.</p>
         </div>
         <div class="card" style="padding:16px">
@@ -424,12 +435,41 @@
     </div>
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const nav = document.querySelector('.nav');
-    const menuBtn = document.getElementById('menuBtn');
-    menuBtn?.addEventListener('click', () => nav.classList.toggle('open'));
-    document.getElementById('menu').addEventListener('click', (e)=>{ if(e.target.tagName === 'A') nav.classList.remove('open');});
-  </script>
+<script>
+  // (o seu script atual – mantenha!)
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const nav = document.querySelector('.nav');
+  const menuBtn = document.getElementById('menuBtn');
+  menuBtn?.addEventListener('click', () => nav.classList.toggle('open'));
+  document.getElementById('menu')?.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') nav.classList.remove('open');
+  });
+</script>
+
+<!-- ⬇️ Novo script do "enviado com sucesso" -->
+<script>
+(function () {
+  const url = new URL(location.href);
+  if (url.searchParams.get('enviado') === '1') {
+    const toast = document.createElement('div');
+    toast.textContent = 'Mensagem enviada! Obrigada pelo contato 💙';
+    toast.setAttribute('role','status');
+    toast.style.cssText =
+      'position:fixed;left:50%;transform:translateX(-50%);bottom:16px;'+
+      'z-index:9999;background:#1f6feb;color:#fff;padding:12px 16px;'+
+      'border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.3);';
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 4500);
+
+    // limpa o parâmetro da URL e mantém a âncora
+    url.searchParams.delete('enviado');
+    history.replaceState(null, '', url.pathname + url.hash);
+
+    // garante foco na seção de contato
+    document.getElementById('contato')
+      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+})();
+</script>
 </body>
 </html>
