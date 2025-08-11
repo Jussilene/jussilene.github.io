@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jussilene V.</title>
+  <meta name="description" content="Portfólio de Jussilene Valim Ribeiro: suporte técnico, CX, retenção e desenvolvimento web. Experiência, formação, projetos e contato." />
+  <meta property="og:title" content="Jussilene Valim Ribeiro — Portfólio" />
+  <meta property="og:description" content="Suporte técnico N1/N2, atendimento B2B, CX e projetos web. Entre em contato via LinkedIn ou WhatsApp." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    :root{
+      --bg:#0b0f14; --surface:#121823; --text:#e6edf3; --muted:#93a1b3;
+      --brand:#6be3ff; --brand-2:#a78bfa; --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial; background:linear-gradient(180deg,var(--bg),#0f1520 60%, #0c121d 100%); color:var(--text)}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{max-width:1120px; margin:0 auto; padding:0 20px}
+    /* NAV */
+    .nav{position:sticky; top:0; z-index:1000; backdrop-filter: blur(10px); background:rgba(18,24,35,.6); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700}
+    .dot{width:12px; height:12px; border-radius:50%; background:linear-gradient(135deg,var(--brand),var(--brand-2))}
+    .nav ul{list-style:none; display:flex; gap:18px; margin:0; padding:0}
+    .nav a{opacity:.9}
+    .nav a:hover{opacity:1}
+    .menu-btn{display:none; background:transparent; border:1px solid rgba(255,255,255,.12); color:var(--text); padding:8px 10px; border-radius:10px}
+    @media (max-width:840px){.nav ul{display:none}.menu-btn{display:inline-flex}.nav.open ul{display:flex; position:absolute; top:56px; right:20px; flex-direction:column; background:var(--surface); box-shadow:var(--shadow); padding:12px; border-radius:12px}}
+    /* HERO */
+    .hero{padding:72px 0 32px}
+    .hero-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:32px; align-items:center}
+    @media (max-width:960px){.hero-grid{grid-template-columns:1fr; text-align:center}}
+    .headline{font-size:clamp(28px,4vw,46px); line-height:1.1; margin:0 0 14px}
+    .subtitle{font-size:clamp(16px,1.4vw,18px); color:var(--muted); margin:0 0 26px}
+    .cta{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid rgba(255,255,255,.12);} 
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#0b0f14; font-weight:700; border:none}
+    .btn:hover{transform:translateY(-1px)}
+    .avatar{width:320px; border-radius:24px; border:2px solid rgba(255,255,255,.1); box-shadow:var(--shadow); background:#0e1420; overflow:hidden; margin-left:auto}
+    .avatar img{width:100%; height:auto; object-fit:contain}
+    @media (max-width:960px){.avatar{margin:0 auto}}
+    .card{background:rgba(18,24,35,.72); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .hero-highlights{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; margin-top:26px}
+    .pill{font-size:13px; color:var(--muted)}
+    @media (max-width:720px){.hero-highlights{grid-template-columns:1fr}}
+    /* SECTIONS */
+    section{padding:60px 0}
+    .section-title{font-size:26px; margin:0 0 18px}
+    .section-sub{color:var(--muted); margin:0 0 26px}
+    .about p{color:#cfd6de; line-height:1.7}
+    .timeline{display:grid; gap:16px}
+    .job{display:grid; grid-template-columns: 120px 1fr; gap:18px; align-items:flex-start}
+    .badge{font-size:12px; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); color:#cfd6de}
+    @media (max-width:640px){.job{grid-template-columns:1fr}}
+    .skills{display:flex; flex-wrap:wrap; gap:10px}
+    .chip{padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); font-size:14px}
+    .grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:18px}
+    @media (max-width:960px){.grid{grid-template-columns: repeat(2, 1fr)}}
+    @media (max-width:640px){.grid{grid-template-columns: 1fr}}
+    .project{overflow:hidden}
+    .project img{height:160px; width:100%; object-fit:cover; border-bottom:1px solid rgba(255,255,255,.06)}
+    .project .content{padding:14px}
+    .project h3{margin:4px 0 6px; font-size:18px}
+    .project p{margin:0; color:#cfd6de; font-size:14px}
+    .project .links{display:flex; gap:10px; margin-top:10px}
+    .contact{display:grid; grid-template-columns: 1.1fr .9fr; gap:20px}
+    @media (max-width:960px){.contact{grid-template-columns:1fr}}
+    .form{display:grid; gap:10px}
+    input, textarea{width:100%; background:#0e1420; border:1px solid rgba(255,255,255,.08); border-radius:10px; padding:12px; color:var(--text)}
+    textarea{min-height:120px; resize:vertical}
+    footer{padding:22px 0 40px; color:var(--muted); text-align:center}
+    .muted{color:var(--muted)}
+    .row{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+    .sep{height:1px; background:rgba(255,255,255,.06); border:none; margin:26px 0}
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav" id="top">
+    <div class="container nav-wrap">
+      <a href="#top" class="brand"><span class="dot"></span> <span>Jussilene V. Ribeiro</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">☰</button>
+      <ul id="menu">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#experiencia">Experiência</a></li>
+        <li><a href="#formacao">Formação</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="pill">✨ Portfólio</p>
+        <h1 class="headline">Olá! Eu sou <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent">Jussilene Valim Ribeiro</span>.</h1>
+        <p class="subtitle">Suporte técnico N1/N2, CX e retenção com +10 anos de experiência. Em transição para tecnologia, desenvolvendo projetos web e automações. Aqui você encontra minha trajetória, projetos e contato.</p>
+        <div class="cta">
+          <a class="btn primary" href="https://www.linkedin.com/in/jussilene-valim-ribeiro/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://wa.me/5541998119767" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn" href="downloads/curr%C3%ADculo.pdf" download="Curriculo-Jussilene.pdf">Baixar CV</a>
+          <a class="btn" href="downloads/carta.pdf" download="Carta-Jussilene.pdf">Carta de Apresentação</a>
+        </div>
+        <div class="hero-highlights">
+          <div class="card" style="padding:16px">
+            <div class="muted">Experiência</div>
+            <div class="row"><strong>+10 anos</strong><span class="muted">em suporte/CS</span></div>
+          </div>
+          <div class="card" style="padding:16px">
+            <div class="muted">Stack atual</div>
+            <div class="row">HTML • CSS • JS • Python</div>
+          </div>
+          <div class="card" style="padding:16px">
+            <div class="muted">Disponível para</div>
+            <div>Estágio/CLT/PJ · Remoto</div>
+          </div>
+        </div>
+      </div>
+      <div class="avatar card">
+        <img src="imagens/jussilene.jpg" alt="Jussilene Valim Ribeiro" />
+      </div>
+    </div>
+  </header>
+
+<main>
+  <!-- SOBRE -->
+  <section id="sobre" class="about">
+    <div class="container">
+      <h2 class="section-title">Sobre</h2>
+      <p>
+        Profissional com mais de <strong>10 anos de experiência</strong> em <strong>Suporte Técnico</strong>, 
+        <strong>Atendimento B2B e B2C</strong>, <strong>Análise de Incidentes</strong> e 
+        <strong>Integração de Sistemas via API</strong>, atuando em ambientes <strong>SaaS</strong> e <strong>CRM</strong>.  
+        Vivência com ferramentas como <strong>Zendesk</strong>, <strong>Hugme</strong>, <strong>Datadog</strong>, 
+        <strong>Salesforce</strong>, <strong>SenseData</strong>, <strong>Core</strong>, <strong>Nexus</strong>, 
+        <strong>Vindi</strong> e <strong>Reclame AQUI</strong>, garantindo resolução de problemas, gestão de crises 
+        e satisfação do cliente.
+      </p>
+
+      <p>
+        Em transição estratégica para a área de <strong>Dados</strong>, <strong>Inteligência Artificial</strong>, 
+        <strong>Automação</strong> e <strong>Desenvolvimento</strong>, cursando <strong>Ciência da Computação</strong> 
+        e <strong>Inteligência Artificial</strong>.  
+        Me especializando em <strong>IA Generativa</strong>, <strong>Agentes Inteligentes</strong> 
+        (<strong>CrewAI</strong>, <strong>LangChain</strong>, <strong>N8N</strong>), 
+        <strong>Automação de Processos</strong> e <strong>Desenvolvimento Web</strong>.
+      </p>
+
+      <p>
+        Experiência prática em <strong>Python</strong>, <strong>SQL</strong>, <strong>Power BI</strong>, 
+        <strong>HTML5</strong>, <strong>CSS3</strong> e <strong>JavaScript</strong>, aplicados em projetos de 
+        <strong>Análise e Visualização de Dados</strong>, <strong>Automação de Atendimento via WhatsApp</strong> 
+        e <strong>Integração com APIs</strong>.
+      </p>
+
+      <p>
+        Busco oportunidades para atuar como <strong>Desenvolvedora</strong>, criando sistemas, aplicações web 
+        e agentes de IA, unindo minhas habilidades técnicas à experiência em atendimento e análise para entregar 
+        soluções inovadoras, escaláveis e de alto impacto.
+      </p>
+
+      <p class="muted">
+        Ferramentas: Zendesk, Salesforce, Datadog, HugMe, Nexus, Vindi, WTP, Shuri, Slack, Zoom, integrações via API, Google Cloud/Sheets.
+      </p>
+    </div>
+  </section>
+</main>
+
+    <hr class="sep" />
+
+<!-- EXPERIÊNCIA -->
+<section id="experiencia">
+  <div class="container">
+    <h2 class="section-title">Experiência</h2>
+
+    <!-- iugu -->
+    <div class="timeline">
+      <div class="card job" style="padding:16px">
+        <div>
+          <div class="badge">2024 – 2025</div>
+          <div class="muted">B2B · Híbrido</div>
+        </div>
+        <div>
+          <h3><strong>Analista de Suporte — iugu</strong></h3>
+          <p>Atuei nas áreas de <strong>Customer Success</strong> e <strong>Suporte ao Cliente</strong>, com foco na experiência do cliente B2B (empresas com CNPJ), oferecendo atendimento técnico e consultivo para empresas, lidando com alto volume de demandas via chat, e-mail e telefone. Meu trabalho era pautado na eficiência, empatia e na entrega de soluções ágeis e precisas.</p>
+
+          <p>Utilizei diversas ferramentas e plataformas, como <strong>Zendesk</strong>, <strong>Hugme</strong>, <strong>CORE</strong> (sistema interno), <strong>SenseData</strong>, <strong>JDPI</strong>, <strong>Datadog</strong>, <strong>Slack</strong>, <strong>Zoom</strong> e <strong>Microsoft Teams</strong>, além de atuar em integrações via API.</p>
+
+          <p>Tive participação destacada no gerenciamento e resposta de manifestações no <strong>Reclame AQUI</strong>, zelando pela imagem da empresa e garantindo a satisfação dos clientes.</p>
+
+          <p>Também atuei diretamente com canais como <strong>Meta</strong> (Facebook/Instagram), <strong>YouTube</strong> e <strong>Portal APMF</strong>, oferecendo suporte técnico, esclarecimento de dúvidas e apoio em solicitações diversas.</p>
+
+          <p><strong>Principais responsabilidades:</strong></p>
+          <ul>
+            <li>Atendimento e suporte técnico a clientes B2B (empresas com CNPJ);</li>
+            <li>Atualização, triagem e encaminhamento de tickets para os times T2;</li>
+            <li>Gestão e acompanhamento de manifestações no Reclame AQUI;</li>
+            <li>Participação em reuniões operacionais e colaborativas;</li>
+            <li>Monitoramento de sistemas (Datadog) e diagnóstico de incidentes;</li>
+            <li>Contribuição para melhoria contínua da jornada do cliente e processos internos.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Wiser Educação -->
+      <div class="card job" style="padding:16px">
+        <div>
+          <div class="badge">2020 – 2024</div>
+          <div class="muted">EdTech · CX · Remoto</div>
+        </div>
+        <div>
+          <h3><strong>Analista de Atendimento Sênior — Wiser Educação</strong></h3>
+          <p>Atuei na área de <strong>retenção</strong>, com foco na reversão de cancelamentos e manutenção da satisfação dos clientes, desenvolvendo habilidades sólidas em resolução de problemas e gestão de crises.</p>
+
+          <p>Também desempenhei atividades no setor de <strong>onboarding</strong>, acompanhando a frequência dos alunos e atuando em <strong>Customer Success</strong>, com foco em oferecer uma experiência mais personalizada e satisfatória.</p>
+
+          <p>No dia a dia, utilizei ferramentas como <strong>Salesforce</strong>, <strong>Nexus</strong>, <strong>Vindi</strong>, <strong>Kwify</strong>, <strong>WTP</strong> e <strong>Shuri</strong> para gerenciar fluxos de atendimento, monitorar dados de performance e assegurar interações de alta qualidade.</p>
+
+          <p>Fui responsável por treinar novos colaboradores, oferecendo orientações práticas e suporte durante a integração, com foco em excelência no atendimento e no fortalecimento da cultura organizacional.</p>
+        </div>
+      </div>
+
+      <!-- Telefônica VIVO -->
+      <div class="card job" style="padding:16px">
+        <div>
+          <div class="badge">2015 – 2019</div>
+          <div class="muted">Telecom · B2C/B2B · Presencial</div>
+        </div>
+        <div>
+          <h3><strong>Analista de Suporte e Atendimento — Telefônica VIVO (GVT)</strong></h3>
+          <p>Iniciei minha jornada na empresa como <strong>suporte técnico</strong>, onde adquiri habilidades fundamentais em atendimento e resolução de problemas.</p>
+
+          <p>Posteriormente, fui promovida a <strong>suporte técnico avançado</strong>, aprofundando meus conhecimentos em soluções complexas e atendimento de alta qualidade.</p>
+
+          <p>Por fim, atuei na <strong>retenção de clientes</strong> tanto na área B2C quanto B2B, desempenhando um papel crucial na reversão de clientes de portabilidade e na manutenção da base de clientes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <hr class="sep" />
+
+    <!-- FORMAÇÃO -->
+    <section id="formacao">
+      <div class="container">
+        <h2 class="section-title">Formação</h2>
+        <div class="timeline">
+          <div class="card job" style="padding:16px">
+            <div>
+              <div class="badge">2025–2027</div>
+              <div class="muted">Universidade Positivo</div>
+            </div>
+            <div>
+              <h3>Curso Superior de Tecnologia em Inteligência Artificial</h3>
+              <p>Fundamentos de IA, agentes e automação, com foco em aplicações práticas.</p>
+            </div>
+          </div>
+          <div class="card job" style="padding:16px">
+            <div>
+              <div class="badge">2023–2029</div>
+              <div class="muted">Universidade Positivo</div>
+            </div>
+            <div>
+              <h3>Bacharelado em Ciência da Computação</h3>
+              <p>Estruturas de dados, desenvolvimento web e boas práticas de software.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="sep" />
+
+    <!-- HABILIDADES -->
+    <section id="habilidades">
+      <div class="container">
+        <h2 class="section-title">Habilidades</h2>
+        <p class="section-sub">Tecnologias e competências.</p>
+        <div class="skills">
+          <span class="chip">HTML5</span>
+          <span class="chip">CSS3</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">Python</span>
+          <span class="chip">Git & GitHub</span>
+          <span class="chip">APIs REST</span>
+          <span class="chip">Customer Success</span>
+          <span class="chip">Suporte Técnico N1/N2</span>
+          <span class="chip">Onboarding & Treinamento</span>
+          <span class="chip">Google Cloud / Sheets</span>
+          <span class="chip">Salesforce / Zendesk / Datadog</span>
+          <span class="chip">Reclame AQUI</span>
+          <span class="chip">Inglês Básico</span>
+          <span class="chip">Espanhol Básico</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="sep" />
+
+<!-- PROJETOS -->
+<section id="projetos">
+  <div class="container">
+    <h2 class="section-title">Projetos</h2>
+    <p class="section-sub">Alguns trabalhos em destaque. Você pode substituir pelos seus projetos reais quando publicar no GitHub.</p>
+    <div class="grid">
+
+      <!-- Projeto 1 -->
+      <article class="card project">
+        <div class="projeto-card">
+          <img src="imagens/projeto1.jpg" alt="Projeto 1" />
+          <div class="em-breve">EM BREVE</div>
+          <div class="conteudo">
+            <h3>Sistema de Tickets Simples</h3>
+            <p>CRUD em planilhas (Google Sheets) com automação e integração via webhook.</p>
+            <div class="botoes">
+              <a href="#" target="_blank" rel="noopener">Demo</a>
+              <a href="#" target="_blank" rel="noopener">Código</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Projeto 2 -->
+      <article class="card project">
+        <div class="projeto-card">
+          <img src="imagens/projeto2.jpg" alt="Projeto 2" />
+          <div class="em-breve">EM BREVE</div>
+          <div class="conteudo">
+            <h3>Landing Page Portfolio</h3>
+            <p>Site leve e responsivo construído com HTML, CSS e JS puros.</p>
+            <div class="botoes">
+              <a href="#" target="_blank" rel="noopener">Demo</a>
+              <a href="#" target="_blank" rel="noopener">Código</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Projeto 3 -->
+      <article class="card project">
+        <div class="projeto-card">
+          <img src="imagens/projeto3.jpg" alt="Projeto 3" />
+          <div class="em-breve">EM BREVE</div>
+          <div class="conteudo">
+            <h3>Dashboard USD/BRL</h3>
+            <p>Visualização com Python (+matplotlib) usando dataset histórico do câmbio.</p>
+            <div class="botoes">
+              <a href="#" target="_blank" rel="noopener">Demo</a>
+              <a href="#" target="_blank" rel="noopener">Código</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+    <hr class="sep" />
+
+    <!-- CONTATO -->
+    <section id="contato">
+      <div class="container contact">
+        <div>
+          <h2 class="section-title">Contato</h2>
+          <p class="section-sub">Vamos conversar sobre oportunidades, freelas ou colaborações.</p>
+          <form class="form" action="mailto:jussilene.valim@gmail.com" method="post" enctype="text/plain">
+            <input type="text" name="nome" placeholder="Seu nome" required />
+            <input type="email" name="email" placeholder="Seu e-mail" required />
+            <textarea name="mensagem" placeholder="Escreva sua mensagem" required></textarea>
+            <button class="btn primary" type="submit">Enviar</button>
+          </form>
+          <p class="muted">Prefere WhatsApp? <a href="https://wa.me/5541998119767" target="_blank" rel="noopener">Clique aqui</a>.</p>
+        </div>
+        <div class="card" style="padding:16px">
+          <h3 style="margin:6px 0 10px">Informações</h3>
+          <div class="row"><span class="badge">E-mail</span> <span>jussilene.valim@gmail.com</span></div>
+          <div class="row"><span class="badge">Cidade</span> <span>CIC / Curitiba · PR</span></div>
+          <div class="row"><span class="badge">Disponibilidade</span> <span>Remoto / Híbrido</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="muted">© <span id="year"></span> • Jussilene Valim Ribeiro — Feito com HTML, CSS e JS</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const nav = document.querySelector('.nav');
+    const menuBtn = document.getElementById('menuBtn');
+    menuBtn?.addEventListener('click', () => nav.classList.toggle('open'));
+    document.getElementById('menu').addEventListener('click', (e)=>{ if(e.target.tagName === 'A') nav.classList.remove('open');});
+  </script>
+</body>
+</html>
+=======
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jussilene V.</title>
+  <meta name="description" content="Portfólio de Jussilene Valim Ribeiro: suporte técnico, CX, retenção e desenvolvimento web. Experiência, formação, projetos e contato." />
+  <meta property="og:title" content="Jussilene Valim Ribeiro — Portfólio" />
+  <meta property="og:description" content="Suporte técnico N1/N2, atendimento B2B, CX e projetos web. Entre em contato via LinkedIn ou WhatsApp." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="favicon.ico" />
+
+  <!-- mantém seu CSS externo -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- mantém seu CSS inline existente (cores/estilo original) -->
+  <style>
+    :root{
+      --bg:#0b0f14; --surface:#121823; --text:#e6edf3; --muted:#93a1b3;
+      --brand:#6be3ff; --brand-2:#a78bfa; --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial; background:linear-gradient(180deg,var(--bg),#0f1520 60%, #0c121d 100%); color:var(--text)}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{max-width:1120px; margin:0 auto; padding:0 20px}
+    /* NAV */
+    .nav{position:sticky; top:0; z-index:1000; backdrop-filter: blur(10px); background:rgba(18,24,35,.6); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700}
+    .dot{width:12px; height:12px; border-radius:50%; background:linear-gradient(135deg,var(--brand),var(--brand-2))}
+    .nav ul{list-style:none; display:flex; gap:18px; margin:0; padding:0}
+    .nav a{opacity:.9}
+    .nav a:hover{opacity:1}
+    .menu-btn{display:none; background:transparent; border:1px solid rgba(255,255,255,.12); color:var(--text); padding:8px 10px; border-radius:10px}
+    @media (max-width:840px){.nav ul{display:none}.menu-btn{display:inline-flex}.nav.open ul{display:flex; position:absolute; top:56px; right:20px; flex-direction:column; background:var(--surface); box-shadow:var(--shadow); padding:12px; border-radius:12px}}
+    /* HERO */
+    .hero{padding:72px 0 32px}
+    .hero-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:32px; align-items:center}
+    @media (max-width:960px){.hero-grid{grid-template-columns:1fr; text-align:center}}
+    .headline{font-size:clamp(28px,4vw,46px); line-height:1.1; margin:0 0 14px}
+    .subtitle{font-size:clamp(16px,1.4vw,18px); color:var(--muted); margin:0 0 26px}
+    .cta{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid rgba(255,255,255,.12);} 
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#0b0f14; font-weight:700; border:none}
+    .btn:hover{transform:translateY(-1px)}
+    .avatar{width:320px; border-radius:24px; border:2px solid rgba(255,255,255,.1); box-shadow:var(--shadow); background:#0e1420; overflow:hidden; margin-left:auto}
+    .avatar img{width:100%; height:auto; object-fit:contain}
+    @media (max-width:960px){.avatar{margin:0 auto}}
+    .card{background:rgba(18,24,35,.72); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .hero-highlights{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; margin-top:26px}
+    .pill{font-size:13px; color:var(--muted)}
+    @media (max-width:720px){.hero-highlights{grid-template-columns:1fr}}
+    /* SECTIONS */
+    section{padding:60px 0}
+    .section-title{font-size:26px; margin:0 0 18px}
+    .section-sub{color:var(--muted); margin:0 0 26px}
+    .about p{color:#cfd6de; line-height:1.7}
+    .timeline{display:grid; gap:16px}
+    .job{display:grid; grid-template-columns: 120px 1fr; gap:18px; align-items:flex-start}
+    .badge{font-size:12px; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); color:#cfd6de}
+    @media (max-width:640px){.job{grid-template-columns:1fr}}
+    .skills{display:flex; flex-wrap:wrap; gap:10px}
+    .chip{padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); font-size:14px}
+    .grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:18px}
+    @media (max-width:960px){.grid{grid-template-columns: repeat(2, 1fr)}}
+    @media (max-width:640px){.grid{grid-template-columns: 1fr}}
+    .project{overflow:hidden}
+    .project img{height:160px; width:100%; object-fit:cover; border-bottom:1px solid rgba(255,255,255,.06)}
+    .project .content{padding:14px}
+    .project h3{margin:4px 0 6px; font-size:18px}
+    .project p{margin:0; color:#cfd6de; font-size:14px}
+    .project .links{display:flex; gap:10px; margin-top:10px}
+    .contact{display:grid; grid-template-columns: 1.1fr .9fr; gap:20px}
+    @media (max-width:960px){.contact{grid-template-columns:1fr}}
+    .form{display:grid; gap:10px}
+    input, textarea{width:100%; background:#0e1420; border:1px solid rgba(255,255,255,.08); border-radius:10px; padding:12px; color:var(--text)}
+    textarea{min-height:120px; resize:vertical}
+    footer{padding:22px 0 40px; color:var(--muted); text-align:center}
+    .muted{color:var(--muted)}
+    .row{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+    .sep{height:1px; background:rgba(255,255,255,.06); border:none; margin:26px 0}
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav" id="top">
+    <div class="container nav-wrap">
+      <a href="#top" class="brand"><span class="dot"></span> <span>Jussilene V. Ribeiro</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">☰</button>
+      <ul id="menu">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#experiencia">Experiência</a></li>
+        <li><a href="#formacao">Formação</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="pill">✨ Portfólio</p>
+        <h1 class="headline">Olá! Eu sou <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent">Jussilene Valim Ribeiro</span>.</h1>
+        <p class="subtitle">Suporte técnico N1/N2, CX e retenção com +10 anos de experiência. Em transição para tecnologia, desenvolvendo projetos web e automações. Aqui você encontra minha trajetória, projetos e contato.</p>
+        <div class="cta">
+          <a class="btn primary" href="https://www.linkedin.com/in/jussilene-valim-ribeiro/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://wa.me/5541998119767" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn" href="downloads/curr%C3%ADculo.pdf" download="Curriculo-Jussilene.pdf">Baixar CV</a>
+          <a class="btn" href="downloads/carta.pdf" download="Carta-Jussilene.pdf">Carta de Apresentação</a>
+        </div>
+        <div class="hero-highlights">
+          <div class="card" style="padding:16px">
+            <div class="muted">Experiência</div>
+            <div class="row"><strong>+10 anos</strong><span class="muted">em suporte/CS</span></div>
+          </div>
+          <div class="card" style="padding:16px">
+            <div class="muted">Stack atual</div>
+            <div class="row">HTML • CSS • JS • Python</div>
+          </div>
+          <div class="card" style="padding:16px">
+            <div class="muted">Disponível para</div>
+            <div>Estágio/CLT/PJ · Remoto</div>
+          </div>
+        </div>
+      </div>
+      <div class="avatar card">
+        <img src="imagens/jussilene.jpg" alt="Jussilene Valim Ribeiro" />
+      </div>
+    </div>
+  </header>
+
+<main>
+  <!-- SOBRE -->
+  <section id="sobre" class="about">
+    <div class="container">
+      <h2 class="section-title">Sobre</h2>
+      <p>Profissional com mais de 10 anos de experiência em <strong>Suporte Técnico</strong>, <strong>Atendimento B2B e B2C</strong>, <strong>Análise de Incidentes</strong> e <strong>Integração de Sistemas via API</strong>, atuando em ambientes <strong>SaaS</strong> e <strong>CRM</strong>. Vivência com ferramentas como <strong>Zendesk</strong>, <strong>Hugme</strong>, <strong>Datadog</strong>, <strong>Salesforce</strong>, <strong>SenseData</strong>, <strong>Core</strong>, <strong>Nexus</strong>, <strong>Vindi</strong> e <strong>Reclame AQUI</strong>, garantindo resolução de problemas, gestão de crises e satisfação do cliente.</p>
+      
+      <p>Em transição estratégica para a área de <strong>Dados</strong>, <strong>Inteligência Artificial</strong>, <strong>Automação</strong> e <strong>Desenvolvimento</strong>, cursando <strong>Ciência da Computação</strong> e <strong>Inteligência Artificial</strong>. Me especializando em <strong>IA Generativa</strong>, <strong>Agentes Inteligentes</strong> (CrewAI, LangChain, N8N), <strong>Automação de Processos</strong> e <strong>Desenvolvimento Web</strong>.</p>
+      
+      <p>Experiência prática em <strong>Python</strong>, <strong>SQL</strong>, <strong>Power BI</strong>, <strong>HTML5</strong>, <strong>CSS3</strong> e <strong>JavaScript</strong>, aplicados em projetos de Análise e Visualização de Dados, Automação de Atendimento via WhatsApp e Integração com APIs.</p>
+      
+      <p>Busco oportunidades para atuar como <strong>Desenvolvedora</strong>, criando sistemas, aplicações web e agentes de IA, unindo minhas habilidades técnicas à experiência em atendimento e análise para entregar soluções inovadoras, escaláveis e de alto impacto.</p>
+    </div>
+  </section>
+</main>
+
+
+    <hr class="sep" />
+
+    <!-- EXPERIÊNCIA -->
+  <section id="experiencia">
+  <div class="container">
+    <h2 class="section-title">Experiência</h2>
+    <p class="section-sub">Últimos cargos e responsabilidades.</p>
+    <div class="timeline">
+
+      <!-- iugu -->
+      <div class="card job" style="padding:16px">
+        <div>
+          <div class="badge">2024 – 2025</div>
+          <div class="muted">B2B · Híbrido</div>
+        </div>
+        <div>
+          <h3>Analista de Suporte — iugu</h3>
+          <p>Atuei nas áreas de Customer Success e Suporte ao Cliente, com foco na experiência do cliente B2B (empresas com CNPJ), oferecendo atendimento técnico e consultivo para empresas, lidando com alto volume de demandas via chat, e-mail e telefone. Meu trabalho era pautado na eficiência, empatia e na entrega de soluções ágeis e precisas.</p>
+
+          <p>Utilizei diversas ferramentas e plataformas, como Zendesk, Hugme, CORE (sistema interno), SenseData, JDPI, Datadog, Slack, Zoom e Microsoft Teams, além de atuar em integrações via API.</p>
+
+          <p>Tive participação destacada no gerenciamento e resposta de manifestações no Reclame AQUI, zelando pela imagem da empresa e garantindo a satisfação dos clientes.</p>
+
+          <p>Também atuei diretamente com canais como Meta (Facebook/Instagram), YouTube e Portal APMF, oferecendo suporte técnico, esclarecimento de dúvidas e apoio em solicitações diversas.</p>
+
+          <p><strong>Principais responsabilidades:</strong></p>
+          <ul>
+            <li>Atendimento e suporte técnico a clientes B2B (empresas com CNPJ);</li>
+            <li>Atualização, triagem e encaminhamento de tickets para os times T2;</li>
+            <li>Gestão e acompanhamento de manifestações no Reclame AQUI;</li>
+            <li>Participação em reuniões operacionais e colaborativas;</li>
+            <li>Monitoramento de sistemas (Datadog) e diagnóstico de incidentes;</li>
+            <li>Contribuição para melhoria contínua da jornada do cliente e processos internos.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Wiser Educação -->
+      <div class="card job" style="padding:16px">
+        <div>
+          <div class="badge">2020 – 2024</div>
+          <div class="muted">EdiTech · CX · Remoto</div>
+        </div>
+        <div>
+          <h3>Analista de Atendimento Sênior — Wiser Educação</h3>
+          <p>Atuei na área de retenção, com foco na reversão de cancelamentos e manutenção da satisfação dos clientes, desenvolvendo habilidades sólidas em resolução de problemas e gestão de crises.</p>
+
+          <p>Também desempenhei atividades no setor de onboarding, acompanhando a frequência dos alunos e atuando em Customer Success, com foco em oferecer uma experiência mais personalizada e satisfatória.</p>
+
+          <p>No dia a dia, utilizei ferramentas como Salesforce, Nexus, Vindi, Kwify, WTP e Shuri para gerenciar fluxos de atendimento, monitorar dados de performance e assegurar interações de alta qualidade.</p>
+
+          <p>Fui responsável por treinar novos colaboradores, oferecendo orientações práticas e suporte durante a integração, com foco em técnicas de retenção e uso eficiente das ferramentas da empresa.</p>
+        </div>
+      </div>
+
+      <!-- Telefônica Vivo -->
+      <div class="card job" style="padding:16px">
+        <div>
+          <div class="badge">2015 – 2019</div>
+          <div class="muted">Telecom · B2C/B2B · Presencial</div>
+        </div>
+        <div>
+          <h3>Analista de Suporte e Atendimento — Telefônica VIVO (GVT)</h3>
+          <p>Iniciei minha jornada na empresa como suporte técnico, onde adquiri habilidades fundamentais em atendimento e resolução de problemas.</p>
+
+          <p>Posteriormente, fui promovida a suporte técnico avançado, aprofundando meus conhecimentos em soluções complexas e atendimento de alta qualidade.</p>
+
+          <p>Por fim, atuei na retenção de clientes tanto na área B2C quanto B2B, desempenhando um papel crucial na reversão de clientes de portabilidade e na manutenção da base de clientes.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+    <hr class="sep" />
+
+    <!-- FORMAÇÃO -->
+    <section id="formacao">
+      <div class="container">
+        <h2 class="section-title">Formação</h2>
+        <div class="timeline">
+          <div class="card job" style="padding:16px">
+            <div>
+              <div class="badge">2025–2027</div>
+              <div class="muted">Universidade Positivo</div>
+            </div>
+            <div>
+              <h3>Curso Superior de Tecnologia em Inteligência Artificial</h3>
+              <p>Fundamentos de IA, agentes e automação, com foco em aplicações práticas.</p>
+            </div>
+          </div>
+          <div class="card job" style="padding:16px">
+            <div>
+              <div class="badge">2023–2029</div>
+              <div class="muted">Universidade Positivo</div>
+            </div>
+            <div>
+              <h3>Bacharelado em Ciência da Computação</h3>
+              <p>Estruturas de dados, desenvolvimento web e boas práticas de software.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="sep" />
+
+    <!-- HABILIDADES -->
+    <section id="habilidades">
+      <div class="container">
+        <h2 class="section-title">Habilidades</h2>
+        <p class="section-sub">Tecnologias e competências.</p>
+        <div class="skills">
+          <span class="chip">HTML5</span>
+          <span class="chip">CSS3</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">Python</span>
+          <span class="chip">Git & GitHub</span>
+          <span class="chip">APIs REST</span>
+          <span class="chip">Customer Success</span>
+          <span class="chip">Suporte Técnico N1/N2</span>
+          <span class="chip">Onboarding & Treinamento</span>
+          <span class="chip">Google Cloud / Sheets</span>
+          <span class="chip">Salesforce / Zendesk / Datadog</span>
+          <span class="chip">Reclame AQUI</span>
+          <span class="chip">Inglês Básico</span>
+          <span class="chip">Espanhol Básico</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="sep" />
+
+    <!-- PROJETOS -->
+<section id="projetos">
+  <div class="container">
+    <h2 class="section-title">Projetos</h2>
+    <p class="section-sub">Alguns trabalhos em destaque. Você pode substituir pelos seus projetos reais quando publicar no GitHub.</p>
+
+    <div class="grid">
+      <!-- Card 1 -->
+      <article class="card project">
+        <div class="card-image">
+          <img src="imagens/projeto1.jpg" alt="Projeto 1" />
+          <span class="em-breve">EM BREVE</span>
+        </div>
+        <div class="content">
+          <h3>Sistema de Tickets Simples</h3>
+          <p>CRUD em planilhas (Google Sheets) com automação e integração via webhook.</p>
+          <div class="links">
+            <a class="btn" href="#" target="_blank" rel="noopener">Demo</a>
+            <a class="btn" href="#" target="_blank" rel="noopener">Código</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card project">
+        <div class="card-image">
+          <img src="imagens/projeto2.jpg" alt="Projeto 2" />
+          <span class="em-breve">EM BREVE</span>
+        </div>
+        <div class="content">
+          <h3>Landing Page Portfolio</h3>
+          <p>Site leve e responsivo construído com HTML, CSS e JS puros.</p>
+          <div class="links">
+            <a class="btn" href="#" target="_blank" rel="noopener">Demo</a>
+            <a class="btn" href="#" target="_blank" rel="noopener">Código</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="card project">
+        <div class="card-image">
+          <img src="imagens/projeto3.jpg" alt="Projeto 3" />
+          <span class="em-breve">EM BREVE</span>
+        </div>
+        <div class="content">
+          <h3>Dashboard USD/BRL</h3>
+          <p>Visualização com Python (+matplotlib) usando dataset histórico do câmbio.</p>
+          <div class="links">
+            <a class="btn" href="#" target="_blank" rel="noopener">Demo</a>
+            <a class="btn" href="#" target="_blank" rel="noopener">Código</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+    <hr class="sep" />
+
+    <!-- CONTATO -->
+    <section id="contato">
+      <div class="container contact">
+        <div>
+          <h2 class="section-title">Contato</h2>
+          <p class="section-sub">Vamos conversar sobre oportunidades, freelas ou colaborações.</p>
+          <form class="form" action="mailto:jussilene.valim@gmail.com" method="post" enctype="text/plain">
+            <input type="text" name="nome" placeholder="Seu nome" required />
+            <input type="email" name="email" placeholder="Seu e-mail" required />
+            <textarea name="mensagem" placeholder="Escreva sua mensagem" required></textarea>
+            <button class="btn primary" type="submit">Enviar</button>
+          </form>
+          <p class="muted">Prefere WhatsApp? <a href="https://wa.me/5541998119767" target="_blank" rel="noopener">Clique aqui</a>.</p>
+        </div>
+        <div class="card" style="padding:16px">
+          <h3 style="margin:6px 0 10px">Informações</h3>
+          <div class="row"><span class="badge">E-mail</span> <span>jussilene.valim@gmail.com</span></div>
+          <div class="row"><span class="badge">Cidade</span> <span>CIC / Curitiba · PR</span></div>
+          <div class="row"><span class="badge">Disponibilidade</span> <span>Remoto / Híbrido</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="muted">© <span id="year"></span> • Jussilene Valim Ribeiro — Feito com HTML, CSS e JS</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const nav = document.querySelector('.nav');
+    const menuBtn = document.getElementById('menuBtn');
+    menuBtn?.addEventListener('click', () => nav.classList.toggle('open'));
+    document.getElementById('menu').addEventListener('click', (e)=>{ if(e.target.tagName === 'A') nav.classList.remove('open');});
+  </script>
+</body>
+</html>
+
