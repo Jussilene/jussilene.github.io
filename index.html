@@ -9,11 +9,8 @@
   <meta property="og:description" content="Suporte técnico N1/N2, atendimento B2B, CX e projetos web. Entre em contato via LinkedIn ou WhatsApp." />
   <meta property="og:type" content="website" />
   <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="style.css?v=6">
 
-  <!-- Seu CSS externo -->
-  <link rel="stylesheet" href="style.css?v=4">
-
-  <!-- Estilos base + (mantive iguais aos do print) -->
   <style>
     :root{
       --bg:#0b0f14; --surface:#121823; --text:#e6edf3; --muted:#93a1b3;
@@ -22,7 +19,12 @@
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial; background:linear-gradient(180deg,var(--bg),#0f1520 60%, #0c121d 100%); color:var(--text)}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial;
+      background:linear-gradient(180deg,var(--bg),#0f1520 60%, #0c121d 100%);
+      color:var(--text)
+    }
     a{color:inherit; text-decoration:none}
     img{max-width:100%; display:block}
     .container{max-width:1120px; margin:0 auto; padding:0 20px}
@@ -36,7 +38,11 @@
     .nav a{opacity:.9}
     .nav a:hover{opacity:1}
     .menu-btn{display:none; background:transparent; border:1px solid rgba(255,255,255,.12); color:var(--text); padding:8px 10px; border-radius:10px}
-    @media (max-width:840px){.nav ul{display:none}.menu-btn{display:inline-flex}.nav.open ul{display:flex; position:absolute; top:56px; right:20px; flex-direction:column; background:var(--surface); box-shadow:var(--shadow); padding:12px; border-radius:12px}}
+    @media (max-width:840px){
+      .nav ul{display:none}
+      .menu-btn{display:inline-flex}
+      .nav.open ul{display:flex; position:absolute; top:56px; right:20px; flex-direction:column; background:var(--surface); box-shadow:var(--shadow); padding:12px; border-radius:12px}
+    }
 
     /* HERO */
     .hero{padding:72px 0 32px}
@@ -44,10 +50,14 @@
     @media (max-width:960px){.hero-grid{grid-template-columns:1fr; text-align:center}}
     .headline{font-size:clamp(28px,4vw,46px); line-height:1.1; margin:0 0 14px}
     .subtitle{font-size:clamp(16px,1.4vw,18px); color:var(--muted); margin:0 0 26px}
-    .cta{display:flex; gap:12px; flex-wrap:wrap}
-    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid rgba(255,255,255,.12);} 
+
+    /* CTA numa linha */
+    .cta{display:flex; gap:12px; flex-wrap:nowrap; overflow-x:auto; padding-bottom:2px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid rgba(255,255,255,.12); white-space:nowrap}
     .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#0b0f14; font-weight:700; border:none}
     .btn:hover{transform:translateY(-1px)}
+    @media (max-width:960px){.cta{flex-wrap:wrap}}
+
     .avatar{width:320px; border-radius:24px; border:2px solid rgba(255,255,255,.1); box-shadow:var(--shadow); background:#0e1420; overflow:hidden; margin-left:auto}
     .avatar img{width:100%; height:auto; object-fit:contain}
     @media (max-width:960px){.avatar{margin:0 auto}}
@@ -67,42 +77,67 @@
     @media (max-width:640px){.job{grid-template-columns:1fr}}
     .skills{display:flex; flex-wrap:wrap; gap:10px}
     .chip{padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); font-size:14px}
+
     .grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:18px}
     @media (max-width:960px){.grid{grid-template-columns: repeat(2, 1fr)}}
     @media (max-width:640px){.grid{grid-template-columns: 1fr}}
+
+    /* ------ PROJETOS (mantidos como você aprovou) ------ */
     .project{overflow:hidden}
     .project img{height:160px; width:100%; object-fit:cover; border-bottom:1px solid rgba(255,255,255,.06)}
     .project .content{padding:14px}
     .project h3{margin:4px 0 6px; font-size:18px}
     .project p{margin:0; color:#cfd6de; font-size:14px}
-    .project .links{display:flex; gap:10px; margin-top:10px}
+
+    .projeto-card{position:relative; overflow:hidden; border-radius:12px; background:#0f1624}
+    .projeto-card img{width:100%; display:block; border-radius:12px 12px 0 0; object-fit:cover}
+    .projeto-card .label{position:absolute; top:12px; left:12px; z-index:10}
+
+    /* EM BREVE – menor, translúcido e pulsando */
+    .label-breve{
+      display:inline-flex; align-items:center; height:22px; padding:0 10px;
+      border-radius:999px; letter-spacing:.5px; font-size:11px; font-weight:800;
+      background:rgba(255,120,60,.22); color:#ffb38d; border:1px solid rgba(255,120,60,.55);
+      box-shadow:0 4px 10px rgba(0,0,0,.18); animation:pulse 1.6s infinite ease-in-out;
+    }
+    @keyframes pulse{
+      0%{transform:scale(1); box-shadow:0 4px 10px rgba(255,120,60,.18)}
+      50%{transform:scale(1.04); box-shadow:0 6px 14px rgba(255,120,60,.28)}
+      100%{transform:scale(1); box-shadow:0 4px 10px rgba(255,120,60,.18)}
+    }
+    /* DATA – somente texto, sem cápsula */
+    .label-date{
+      color:#cfe7ff; font-weight:700; font-size:14px; letter-spacing:.3px;
+      text-shadow:0 2px 6px rgba(0,0,0,.65);
+    }
+
+    /* Botão "VER PROJETO" — simples com borda sutil */
+    .project .links{display:flex; justify-content:center; margin-top:14px}
+    .btn-ver{
+      padding:10px 16px; border-radius:10px; font-weight:700;
+      border:1px solid rgba(255,255,255,.7); background:transparent; color:#fff;
+      transition:all .22s ease; box-shadow:0 6px 18px rgba(0,0,0,.18);
+    }
+    .btn-ver:hover,
+    .btn-ver:focus-visible{color:#ff3b3b; border-color:#ff3b3b; background:rgba(255,59,59,.10)}
+    .btn-ver:active{transform:translateY(1px)}
+
+    /* ------ CONTATO (restaurado ao estilo antigo) ------ */
     .contact{display:grid; grid-template-columns: 1.1fr .9fr; gap:20px}
     @media (max-width:960px){.contact{grid-template-columns:1fr}}
-    .form{display:grid; gap:10px}
-    input, textarea{width:100%; background:#0e1420; border:1px solid rgba(255,255,255,.08); border-radius:10px; padding:12px; color:var(--text)}
-    textarea{min-height:120px; resize:vertical}
+    /* aplica grid no form mesmo sem classe */
+    #contato form{display:grid; gap:10px}
+    /* campos com o visual antigo */
+    #contato input, #contato textarea{
+      width:100%; background:#0e1420; border:1px solid rgba(255,255,255,.08);
+      border-radius:10px; padding:12px; color:var(--text);
+    }
+    #contato textarea{min-height:120px; resize:vertical}
+
     footer{padding:22px 0 40px; color:var(--muted); text-align:center}
     .muted{color:var(--muted)}
     .row{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
     .sep{height:1px; background:rgba(255,255,255,.06); border:none; margin:26px 0}
-
-    /* ===== Projetos – rótulo EM BREVE no canto inferior (igual aos prints) ===== */
-    .projeto-card{position:relative; overflow:hidden; border-radius:12px; background:#0f1624}
-    .projeto-card img{width:100%; display:block; border-radius:12px 12px 0 0; object-fit:cover}
-    .projeto-card .em-breve{
-      position:absolute; bottom:12px; left:12px;
-      background:linear-gradient(135deg,#ff6a00,#ff3b3b);
-      color:#fff; font-size:14px; font-weight:bold; padding:6px 14px;
-      border-radius:30px; box-shadow:0 4px 10px rgba(0,0,0,.25);
-      text-transform:uppercase; letter-spacing:1px; animation:pulse 1.5s infinite; z-index:10;
-    }
-    @keyframes pulse{0%{transform:scale(1);opacity:1}50%{transform:scale(1.05);opacity:.85}100%{transform:scale(1);opacity:1}}
-    .projeto-card .conteudo{padding:15px; color:#fff}
-    .projeto-card .conteudo h3{margin:4px 0 6px; font-size:18px}
-    .projeto-card .conteudo p{margin:0; color:#cfd6de; font-size:14px}
-    .projeto-card .botoes{display:flex; gap:10px; margin-top:10px}
-    .projeto-card .botoes a{border:1px solid #fff; padding:6px 12px; border-radius:6px; text-decoration:none; color:#fff; font-size:14px; transition:background .3s,color .3s}
-    .projeto-card .botoes a:hover{background:rgba(255,255,255,.1); color:#ff3b3b}
   </style>
 </head>
 
@@ -130,12 +165,15 @@
         <p class="pill">✨ Portfólio</p>
         <h1 class="headline">Olá! Eu sou <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent">Jussilene Valim Ribeiro</span>.</h1>
         <p class="subtitle">Suporte técnico N1/N2, CX e retenção com +10 anos de experiência. Em transição para tecnologia, desenvolvendo projetos web e automações. Aqui você encontra minha trajetória, projetos e contato.</p>
+
         <div class="cta">
           <a class="btn primary" href="https://www.linkedin.com/in/jussilene-valim-ribeiro/" target="_blank" rel="noopener">LinkedIn</a>
           <a class="btn" href="https://wa.me/5541998119767" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn" href="https://github.com/Jussilene" target="_blank" rel="noopener">GitHub</a>
           <a class="btn" href="downloads/curriculo.pdf" download="Curriculo-Jussilene.pdf">Baixar CV</a>
           <a class="btn" href="downloads/carta.pdf" download="Carta-Jussilene.pdf">Carta de Apresentação</a>
         </div>
+
         <div class="hero-highlights">
           <div class="card" style="padding:16px">
             <div class="muted">Experiência</div>
@@ -151,6 +189,7 @@
           </div>
         </div>
       </div>
+
       <div class="avatar card">
         <img src="imagens/jussilene.jpg" alt="Jussilene Valim Ribeiro" />
       </div>
@@ -158,113 +197,77 @@
   </header>
 
   <main>
-   <!-- SOBRE -->
-<section id="sobre" class="about">
-  <div class="container">
-    <h2 class="section-title">Sobre</h2>
+    <!-- SOBRE -->
+    <section id="sobre" class="about">
+      <div class="container">
+        <h2 class="section-title">Sobre</h2>
+        <p>Profissional com mais de <strong>10 anos de experiência</strong> em <strong>Suporte Técnico</strong>, <strong>Atendimento B2B e B2C</strong>, <strong>Análise de Incidentes</strong> e <strong>Integração de Sistemas via API</strong>, atuando em ambientes <strong>SaaS</strong> e <strong>CRM</strong>. Vivência com ferramentas como <strong>Zendesk</strong>, <strong>Hugme</strong>, <strong>Datadog</strong>, <strong>Salesforce</strong>, <strong>SenseData</strong>, <strong>Core</strong>, <strong>Nexus</strong>, <strong>Vindi</strong> e <strong>Reclame AQUI</strong>, garantindo resolução de problemas, gestão de crises e satisfação do cliente.</p>
+        <p>Em transição estratégica para a área de <strong>Dados</strong>, <strong>Inteligência Artificial</strong>, <strong>Automação</strong> e <strong>Desenvolvimento</strong>, cursando <strong>Ciência da Computação</strong> e <strong>Inteligência Artificial</strong>. Me especializando em <strong>IA Generativa</strong>, <strong>Agentes Inteligentes</strong> (<strong>CrewAI</strong>, <strong>LangChain</strong>, <strong>N8N</strong>), <strong>Automação de Processos</strong> e <strong>Desenvolvimento Web</strong>.</p>
+        <p>Experiência prática em <strong>Python</strong>, <strong>SQL</strong>, <strong>Power BI</strong>, <strong>HTML5</strong>, <strong>CSS3</strong> e <strong>JavaScript</strong>, aplicados em projetos de <strong>Análise e Visualização de Dados</strong>, <strong>Automação de Atendimento via WhatsApp</strong> e <strong>Integração com APIs</strong>.</p>
+        <p>Busco oportunidades para atuar como <strong>Desenvolvedora</strong>, criando sistemas, aplicações web e agentes de IA, unindo minhas habilidades técnicas à experiência em atendimento e análise para entregar soluções inovadoras, escaláveis e de alto impacto.</p>
+        <p class="muted">Ferramentas: Zendesk, Salesforce, Datadog, HugMe, Nexus, Vindi, WTP, Shuri, Slack, Zoom, integrações via API, Google Cloud/Sheets.</p>
+      </div>
+    </section>
 
-    <p>
-      Profissional com mais de <strong>10 anos de experiência</strong> em <strong>Suporte Técnico</strong>, 
-      <strong>Atendimento B2B e B2C</strong>, <strong>Análise de Incidentes</strong> e 
-      <strong>Integração de Sistemas via API</strong>, atuando em ambientes <strong>SaaS</strong> e <strong>CRM</strong>.  
-      Vivência com ferramentas como <strong>Zendesk</strong>, <strong>Hugme</strong>, <strong>Datadog</strong>, 
-      <strong>Salesforce</strong>, <strong>SenseData</strong>, <strong>Core</strong>, <strong>Nexus</strong>, 
-      <strong>Vindi</strong> e <strong>Reclame AQUI</strong>, garantindo resolução de problemas, gestão de crises 
-      e satisfação do cliente.
-    </p>
+    <hr class="sep" />
 
-    <p>
-      Em transição estratégica para a área de <strong>Dados</strong>, <strong>Inteligência Artificial</strong>, 
-      <strong>Automação</strong> e <strong>Desenvolvimento</strong>, cursando <strong>Ciência da Computação</strong> 
-      e <strong>Inteligência Artificial</strong>.  
-      Me especializando em <strong>IA Generativa</strong>, <strong>Agentes Inteligentes</strong> 
-      (<strong>CrewAI</strong>, <strong>LangChain</strong>, <strong>N8N</strong>), 
-      <strong>Automação de Processos</strong> e <strong>Desenvolvimento Web</strong>.
-    </p>
+    <!-- EXPERIÊNCIA -->
+    <section id="experiencia">
+      <div class="container">
+        <h2 class="section-title">Experiência</h2>
+        <div class="timeline">
+          <div class="card job" style="padding:16px">
+            <div>
+              <div class="badge">2024 – 2025</div>
+              <div class="muted">B2B · Híbrido</div>
+            </div>
+            <div>
+              <h3><strong>Analista de Suporte — iugu</strong></h3>
+              <p>Atuei nas áreas de <strong>Customer Success</strong> e <strong>Suporte ao Cliente</strong>, com foco na experiência do cliente B2B (empresas com CNPJ), oferecendo atendimento técnico e consultivo para empresas, lidando com alto volume de demandas via chat, e-mail e telefone. Meu trabalho era pautado na eficiência, empatia e na entrega de soluções ágeis e precisas.</p>
+              <p>Utilizei diversas ferramentas e plataformas, como <strong>Zendesk</strong>, <strong>Hugme</strong>, <strong>CORE</strong> (sistema interno), <strong>SenseData</strong>, <strong>JDPI</strong>, <strong>Datadog</strong>, <strong>Slack</strong>, <strong>Zoom</strong> e <strong>Microsoft Teams</strong>, além de atuar em integrações via API.</p>
+              <p>Tive participação destacada no gerenciamento e resposta de manifestações no <strong>Reclame AQUI</strong>, zelando pela imagem da empresa e garantindo a satisfação dos clientes.</p>
+              <p>Também atuei diretamente com canais como <strong>Meta</strong> (Facebook/Instagram), <strong>YouTube</strong> e <strong>Portal APMF</strong>, oferecendo suporte técnico, esclarecimento de dúvidas e apoio em solicitações diversas.</p>
+              <p><strong>Principais responsabilidades:</strong></p>
+              <ul>
+                <li>Atendimento e suporte técnico a clientes B2B (empresas com CNPJ);</li>
+                <li>Atualização, triagem e encaminhamento de tickets para os times T2;</li>
+                <li>Gestão e acompanhamento de manifestações no Reclame AQUI;</li>
+                <li>Participação em reuniões operacionais e colaborativas;</li>
+                <li>Monitoramento de sistemas (Datadog) e diagnóstico de incidentes);</li>
+                <li>Contribuição para melhoria contínua da jornada do cliente e processos internos.</li>
+              </ul>
+            </div>
+          </div>
 
-    <p>
-      Experiência prática em <strong>Python</strong>, <strong>SQL</strong>, <strong>Power BI</strong>, 
-      <strong>HTML5</strong>, <strong>CSS3</strong> e <strong>JavaScript</strong>, aplicados em projetos de 
-      <strong>Análise e Visualização de Dados</strong>, <strong>Automação de Atendimento via WhatsApp</strong> 
-      e <strong>Integração com APIs</strong>.
-    </p>
+          <div class="card job" style="padding:16px">
+            <div>
+              <div class="badge">2020 – 2024</div>
+              <div class="muted">EdTech · CX · Remoto</div>
+            </div>
+            <div>
+              <h3><strong>Analista de Atendimento Sênior — Wiser Educação</strong></h3>
+              <p>Atuei na área de <strong>retenção</strong>, com foco na reversão de cancelamentos e manutenção da satisfação dos clientes, desenvolvendo habilidades sólidas em resolução de problemas e gestão de crises.</p>
+              <p>Também desempenhei atividades no setor de <strong>onboarding</strong>, acompanhando a frequência dos alunos e atuando em <strong>Customer Success</strong>, com foco em oferecer uma experiência mais personalizada e satisfatória.</p>
+              <p>No dia a dia, utilizei ferramentas como <strong>Salesforce</strong>, <strong>Nexus</strong>, <strong>Vindi</strong>, <strong>Kwify</strong>, <strong>WTP</strong> e <strong>Shuri</strong> para gerenciar fluxos de atendimento, monitorar dados de performance e assegurar interações de alta qualidade.</p>
+              <p>Fui responsável por treinar novos colaboradores, oferecendo orientações práticas e suporte durante a integração, com foco em excelência no atendimento e no fortalecimento da cultura organizacional.</p>
+            </div>
+          </div>
 
-    <p>
-      Busco oportunidades para atuar como <strong>Desenvolvedora</strong>, criando sistemas, aplicações web 
-      e agentes de IA, unindo minhas habilidades técnicas à experiência em atendimento e análise para entregar 
-      soluções inovadoras, escaláveis e de alto impacto.
-    </p>
-
-    <p class="muted">
-      Ferramentas: Zendesk, Salesforce, Datadog, HugMe, Nexus, Vindi, WTP, Shuri, Slack, Zoom, integrações via API, Google Cloud/Sheets.
-    </p>
-  </div>
-</section>
-
-<hr class="sep" />
-
-<!-- EXPERIÊNCIA -->
-<section id="experiencia">
-  <div class="container">
-    <h2 class="section-title">Experiência</h2>
-
-    <div class="timeline">
-      <!-- iugu -->
-      <div class="card job" style="padding:16px">
-        <div>
-          <div class="badge">2024 – 2025</div>
-          <div class="muted">B2B · Híbrido</div>
-        </div>
-        <div>
-          <h3><strong>Analista de Suporte — iugu</strong></h3>
-          <p>Atuei nas áreas de <strong>Customer Success</strong> e <strong>Suporte ao Cliente</strong>, com foco na experiência do cliente B2B (empresas com CNPJ), oferecendo atendimento técnico e consultivo para empresas, lidando com alto volume de demandas via chat, e-mail e telefone. Meu trabalho era pautado na eficiência, empatia e na entrega de soluções ágeis e precisas.</p>
-          <p>Utilizei diversas ferramentas e plataformas, como <strong>Zendesk</strong>, <strong>Hugme</strong>, <strong>CORE</strong> (sistema interno), <strong>SenseData</strong>, <strong>JDPI</strong>, <strong>Datadog</strong>, <strong>Slack</strong>, <strong>Zoom</strong> e <strong>Microsoft Teams</strong>, além de atuar em integrações via API.</p>
-          <p>Tive participação destacada no gerenciamento e resposta de manifestações no <strong>Reclame AQUI</strong>, zelando pela imagem da empresa e garantindo a satisfação dos clientes.</p>
-          <p>Também atuei diretamente com canais como <strong>Meta</strong> (Facebook/Instagram), <strong>YouTube</strong> e <strong>Portal APMF</strong>, oferecendo suporte técnico, esclarecimento de dúvidas e apoio em solicitações diversas.</p>
-          <p><strong>Principais responsabilidades:</strong></p>
-          <ul>
-            <li>Atendimento e suporte técnico a clientes B2B (empresas com CNPJ);</li>
-            <li>Atualização, triagem e encaminhamento de tickets para os times T2;</li>
-            <li>Gestão e acompanhamento de manifestações no Reclame AQUI;</li>
-            <li>Participação em reuniões operacionais e colaborativas;</li>
-            <li>Monitoramento de sistemas (Datadog) e diagnóstico de incidentes;</li>
-            <li>Contribuição para melhoria contínua da jornada do cliente e processos internos.</li>
-          </ul>
+          <div class="card job" style="padding:16px">
+            <div>
+              <div class="badge">2015 – 2019</div>
+              <div class="muted">Telecom · B2C/B2B · Presencial</div>
+            </div>
+            <div>
+              <h3><strong>Analista de Suporte e Atendimento — Telefônica VIVO (GVT)</strong></h3>
+              <p>Iniciei minha jornada na empresa como <strong>suporte técnico</strong>, onde adquiri habilidades fundamentais em atendimento e resolução de problemas.</p>
+              <p>Posteriormente, fui promovida a <strong>suporte técnico avançado</strong>, aprofundando meus conhecimentos em soluções complexas e atendimento de alta qualidade.</p>
+              <p>Por fim, atuei na <strong>retenção de clientes</strong> tanto na área B2C quanto B2B, desempenhando um papel crucial na reversão de clientes de portabilidade e na manutenção da base de clientes.</p>
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- Wiser Educação -->
-      <div class="card job" style="padding:16px">
-        <div>
-          <div class="badge">2020 – 2024</div>
-          <div class="muted">EdTech · CX · Remoto</div>
-        </div>
-        <div>
-          <h3><strong>Analista de Atendimento Sênior — Wiser Educação</strong></h3>
-          <p>Atuei na área de <strong>retenção</strong>, com foco na reversão de cancelamentos e manutenção da satisfação dos clientes, desenvolvendo habilidades sólidas em resolução de problemas e gestão de crises.</p>
-          <p>Também desempenhei atividades no setor de <strong>onboarding</strong>, acompanhando a frequência dos alunos e atuando em <strong>Customer Success</strong>, com foco em oferecer uma experiência mais personalizada e satisfatória.</p>
-          <p>No dia a dia, utilizei ferramentas como <strong>Salesforce</strong>, <strong>Nexus</strong>, <strong>Vindi</strong>, <strong>Kwify</strong>, <strong>WTP</strong> e <strong>Shuri</strong> para gerenciar fluxos de atendimento, monitorar dados de performance e assegurar interações de alta qualidade.</p>
-          <p>Fui responsável por treinar novos colaboradores, oferecendo orientações práticas e suporte durante a integração, com foco em excelência no atendimento e no fortalecimento da cultura organizacional.</p>
-        </div>
-      </div>
-
-      <!-- Telefônica VIVO -->
-      <div class="card job" style="padding:16px">
-        <div>
-          <div class="badge">2015 – 2019</div>
-          <div class="muted">Telecom · B2C/B2B · Presencial</div>
-        </div>
-        <div>
-          <h3><strong>Analista de Suporte e Atendimento — Telefônica VIVO (GVT)</strong></h3>
-          <p>Iniciei minha jornada na empresa como <strong>suporte técnico</strong>, onde adquiri habilidades fundamentais em atendimento e resolução de problemas.</p>
-          <p>Posteriormente, fui promovida a <strong>suporte técnico avançado</strong>, aprofundando meus conhecimentos em soluções complexas e atendimento de alta qualidade.</p>
-          <p>Por fim, atuei na <strong>retenção de clientes</strong> tanto na área B2C quanto B2B, desempenhando um papel crucial na reversão de clientes de portabilidade e na manutenção da base de clientes.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <hr class="sep" />
 
@@ -325,72 +328,67 @@
 
     <hr class="sep" />
 
-<!-- PROJETOS -->
-<section id="projetos">
-  <div class="container">
-    <h2 class="section-title">Projetos</h2>
-    <p class="section-sub">
-      Projetos full stack em construção, focados em autenticação, APIs e banco de dados.
-      Os links de <strong>Demo</strong> e <strong>Código</strong> serão ativados assim que forem publicados.
-    </p>
+    <!-- PROJETOS -->
+    <section id="projetos">
+      <div class="container">
+        <h2 class="section-title">Projetos</h2>
+        <p class="section-sub">
+          Projetos full stack em construção, focados em autenticação, APIs e banco de dados.
+          Os links de <strong>Demo</strong> serão ativados assim que forem publicados.
+        </p>
 
-    <div class="grid">
-
-      <!-- Projeto 1 -->
-      <article class="card project">
-        <div class="projeto-card">
-          <img src="imagens/projeto1.jpg" alt="Task Manager – Controle de Tarefas" />
-          <div class="em-breve">EM BREVE</div>
-          <div class="conteudo">
-            <h3>Task Manager — Controle de Tarefas com Login</h3>
-            <p>App full stack com autenticação JWT, CRUD de tarefas e filtros por status/prioridade. 
-               Back-end em Node.js + Express com MongoDB; front responsivo em HTML, CSS e JS.</p>
-            <div class="botoes">
-              <a href="#" target="_blank" rel="noopener">Demo</a>
-              <a href="#" target="_blank" rel="noopener">Código</a>
+        <div class="grid">
+          <!-- Projeto 1 -->
+          <article class="card project">
+            <div class="projeto-card">
+              <img src="imagens/projeto1.jpg" alt="Task Manager – Controle de Tarefas" />
+              <!-- data (somente texto) -->
+              <span class="label label-date">14/08/2025</span>
             </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Projeto 2 -->
-      <article class="card project">
-        <div class="projeto-card">
-          <img src="imagens/projeto2.jpg" alt="WeatherNow – Dashboard de Clima" />
-          <div class="em-breve">EM BREVE</div>
-          <div class="conteudo">
-            <h3>WeatherNow — Dashboard de Clima em Tempo Real</h3>
-            <p>Consumo da API do OpenWeather com busca por cidade, condições atuais e previsão de 5 dias.
-               Node.js como proxy, interface responsiva e gráficos simples no front.</p>
-            <div class="botoes">
-              <a href="#" target="_blank" rel="noopener">Demo</a>
-              <a href="#" target="_blank" rel="noopener">Código</a>
+            <div class="content">
+              <h3>Task Manager — Controle de Tarefas com Login</h3>
+              <p>App full stack com autenticação JWT, CRUD de tarefas e filtros por status/prioridade. 
+                 Back-end em Node.js + Express com MongoDB; front responsivo em HTML, CSS e JS.</p>
+              <div class="links">
+                <a class="btn-ver" href="https://task-manager-4dni.onrender.com/" target="_blank" rel="noopener">VER PROJETO</a>
+              </div>
             </div>
-          </div>
-        </div>
-      </article>
+          </article>
 
-      <!-- Projeto 3 -->
-      <article class="card project">
-        <div class="projeto-card">
-          <img src="imagens/projeto3.jpg" alt="MiniStore – Loja Virtual" />
-          <div class="em-breve">EM BREVE</div>
-          <div class="conteudo">
-            <h3>MiniStore — E-commerce com Carrinho e Checkout</h3>
-            <p>Catálogo de produtos, carrinho dinâmico e checkout simulado. Painel admin com CRUD.
-               Stack: Node.js/Express + MongoDB no back; HTML, CSS e JS no front.</p>
-            <div class="botoes">
-              <a href="#" target="_blank" rel="noopener">Demo</a>
-              <a href="#" target="_blank" rel="noopener">Código</a>
+          <!-- Projeto 2 -->
+          <article class="card project">
+            <div class="projeto-card">
+              <img src="imagens/projeto2.jpg" alt="WeatherNow – Dashboard de Clima" />
+              <span class="label label-breve">EM BREVE</span>
             </div>
-          </div>
+            <div class="content">
+              <h3>WeatherNow — Dashboard de Clima em Tempo Real</h3>
+              <p>Consumo da API do OpenWeather com busca por cidade, condições atuais e previsão de 5 dias.
+                 Node.js como proxy, interface responsiva e gráficos simples no front.</p>
+              <div class="links">
+                <a class="btn-ver" href="#" onclick="return false;">VER PROJETO</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projeto 3 -->
+          <article class="card project">
+            <div class="projeto-card">
+              <img src="imagens/projeto3.jpg" alt="MiniStore – Loja Virtual" />
+              <span class="label label-breve">EM BREVE</span>
+            </div>
+            <div class="content">
+              <h3>MiniStore — E-commerce com Carrinho e Checkout</h3>
+              <p>Catálogo de produtos, carrinho dinâmico e checkout simulado. Painel admin com CRUD.
+                 Stack: Node.js/Express + MongoDB no back; HTML, CSS e JS no front.</p>
+              <div class="links">
+                <a class="btn-ver" href="#" onclick="return false;">VER PROJETO</a>
+              </div>
+            </div>
+          </article>
         </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
+      </div>
+    </section>
 
     <hr class="sep" />
 
@@ -400,21 +398,19 @@
         <div>
           <h2 class="section-title">Contato</h2>
           <p class="section-sub">Vamos conversar sobre oportunidades, freelas ou colaborações.</p>
+
           <form action="https://formsubmit.co/jussilene.valim@gmail.com" method="POST">
-  <!-- anti-spam -->
-              <input type="text" name="_honey" style="display:none">
-              <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" style="display:none">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="Contato via Portfólio – Jussilene">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://jussilene.github.io/?enviado=1#contato">
 
-  <!-- configurações do email -->
-              <input type="hidden" name="_subject" value="Contato via Portfólio – Jussilene">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="_next" value="https://jussilene.github.io/?enviado=1#contato">
+            <input type="text"   name="nome"     placeholder="Seu nome"   required autocomplete="name">
+            <input type="email"  name="email"    placeholder="Seu e-mail" required autocomplete="email">
+            <textarea name="mensagem" placeholder="Escreva sua mensagem" required rows="6"></textarea>
 
-              <input type="text"   name="nome"     placeholder="Seu nome"   required autocomplete="name">
-              <input type="email"  name="email"    placeholder="Seu e-mail" required autocomplete="email">
-              <textarea name="mensagem" placeholder="Escreva sua mensagem" required rows="6"></textarea>
-
-             <button type="submit" class="btn primary">Enviar</button>
+            <button type="submit" class="btn primary">Enviar</button>
           </form>
 
           <p class="muted">Prefere WhatsApp? <a href="https://wa.me/5541998119767" target="_blank" rel="noopener">Clique aqui</a>.</p>
@@ -436,7 +432,6 @@
   </footer>
 
 <script>
-  // (o seu script atual – mantenha!)
   document.getElementById('year').textContent = new Date().getFullYear();
   const nav = document.querySelector('.nav');
   const menuBtn = document.getElementById('menuBtn');
@@ -446,7 +441,6 @@
   });
 </script>
 
-<!-- ⬇️ Novo script do "enviado com sucesso" -->
 <script>
 (function () {
   const url = new URL(location.href);
@@ -461,11 +455,8 @@
     document.body.appendChild(toast);
     setTimeout(() => toast.remove(), 4500);
 
-    // limpa o parâmetro da URL e mantém a âncora
     url.searchParams.delete('enviado');
     history.replaceState(null, '', url.pathname + url.hash);
-
-    // garante foco na seção de contato
     document.getElementById('contato')
       ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
