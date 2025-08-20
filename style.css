@@ -1,186 +1,75 @@
 /* ====== RESET BÁSICO ====== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color:#0d1117;
+  color:#fff;
+  line-height:1.6;
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #0d1117;
-  color: #fff;
-  line-height: 1.6;
-}
-
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-}
+.container{width:90%;max-width:1200px;margin:auto}
 
 /* ====== TÍTULOS ====== */
-.section-title {
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-.section-sub {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 1rem;
-  color: #ccc;
-}
+.section-title{font-size:2rem;text-align:center;margin-bottom:.5rem}
+.section-sub{text-align:center;margin-bottom:2rem;font-size:1rem;color:#ccc}
 
 /* ====== GRID ====== */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:1.5rem;
 }
 
 /* ====== CARD PROJETO ====== */
-.card.project {
-  background: #161b22;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
+.card.project{
+  background:#161b22;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.4);
+  transition:transform .3s ease, box-shadow .3s ease;
+  position:relative;
+}
+.card.project:hover{
+  transform:translateY(-5px);
+  box-shadow:0 6px 25px rgba(0,0,0,.5);
 }
 
-.card.project:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
-}
+.projeto-card{position:relative}
+.projeto-card img{display:block;width:100%;height:auto}
 
-.projeto-card {
-  position: relative;
-}
-
-.projeto-card img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* ===== PROJETOS — manter DATA como está agora ===== */
+/* ===== PROJETOS — DATA (texto simples) ===== */
 .label-date{
-  position:absolute;
-  top:12px;
-  left:16px;
-  padding:0;
-  background:transparent;
-  border:0;
-  color:#dff2ff;               /* azul clarinho */
-  font-size:18px;
-  font-weight:800;
-  text-shadow:0 1px 2px rgba(0,0,0,.35);
-  z-index:10;
+  position:absolute;top:12px;left:16px;padding:0;background:transparent;border:0;
+  color:#dff2ff;font-size:18px;font-weight:800;text-shadow:0 1px 2px rgba(0,0,0,.35);z-index:10;
 }
 .label-date::before{
-  content:"";
-  position:absolute;
-  left:-14px;
-  top:50%;
-  transform:translateY(-50%);
-  width:10px;
-  height:2px;
-  background:rgba(255,255,255,.75);
-  border-radius:2px;
+  content:"";position:absolute;left:-14px;top:50%;transform:translateY(-50%);
+  width:10px;height:2px;background:rgba(255,255,255,.75);border-radius:2px;
 }
 
-/* ===== PROJETOS — “EM BREVE” (visual antigo corrigido) ===== */
+/* ===== PROJETOS — “EM BREVE” ===== */
 .label-breve{
-  position:absolute;
-  top:12px;
-  left:12px;
-
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-
-  height:26px;
-  padding:0 10px;
-  border-radius:999px;
-  line-height:1;
-  white-space:nowrap;
-
-  /* cores e borda no estilo do print antigo */
-  background: linear-gradient(135deg, #ff7a1a 0%, #ff3b3b 100%);
-  border: 1px solid rgba(255,111,71,0.9);
-
-  color:#fff;
-  font-size:12px;
-  font-weight:bold;
-  letter-spacing:1px;
-
-  box-shadow:0 4px 10px rgba(0,0,0,.25);
-  z-index:10;
-  animation: proj-pulse 1.5s infinite;
+  position:absolute;top:12px;left:12px;
+  display:inline-flex;align-items:center;justify-content:center;
+  height:26px;padding:0 10px;border-radius:999px;line-height:1;white-space:nowrap;
+  background:linear-gradient(135deg,#ff7a1a 0%,#ff3b3b 100%);
+  border:1px solid rgba(255,111,71,0.9);
+  color:#fff;font-size:12px;font-weight:bold;letter-spacing:1px;
+  box-shadow:0 4px 10px rgba(0,0,0,.25);z-index:10;
+  animation:proj-pulse 1.5s ease-in-out infinite;
 }
+@keyframes proj-pulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
 
-}
-@keyframes proj-pulse{
-  0%{transform:scale(1); opacity:1}
-  50%{transform:scale(1.05); opacity:.85}
-  100%{transform:scale(1); opacity:1}
-}
-
-/* ===== PROJETOS — "VER PROJETO" igual ao botão antigo "Demo" ===== */
-.project .links{
-  display:flex;
-  justify-content:center;
-  margin-top:14px;
-}
+/* ===== PROJETOS — "VER PROJETO" ===== */
+.project .links{display:flex;justify-content:center;margin-top:14px}
 .project .links .btn-ver{
-  display:inline-block;
-  padding:0.5rem 1rem;
-  border-radius:6px;           /* retangular com cantos suaves */
-  background:transparent;
-  border:1px solid #fff;       /* borda branca como o antigo */
-  color:#fff;
-  text-decoration:none;
-  font-size:0.95rem;
-  font-weight:700;
-  transition:all .25s ease;
+  display:inline-block;padding:.5rem 1rem;border-radius:6px;
+  background:transparent;border:1px solid #fff;color:#fff;text-decoration:none;
+  font-size:.95rem;font-weight:700;transition:all .25s ease;
 }
-.project .links .btn-ver:hover{
-  background:#fff;             /* mesmo hover do antigo */
-  color:#000;
-}
-/* ====== ESPAÇAMENTO ENTRE PARÁGRAFOS SOBRE E EXPERIÊNCIA ====== */
-.about p,
-#experiencia p {
-  margin-bottom: 1rem; /* espaço de 16px entre parágrafos */
-  line-height: 1.6;    /* aumenta a altura da linha pra leitura ficar mais confortável */
-}
-/* === OVERRIDE do "EM BREVE" (laranja com degradê, igual ao print) === */
-/* cobre tanto <span class="label label-breve"> quanto <div class="em-breve"> */
-.label.label-breve,
-.projeto-card .em-breve{
-  background: linear-gradient(135deg, #ff7a1a 0%, #ff3b3b 100%) !important;
-  border: 1px solid rgba(255,111,71,.9) !important;
-  color: #fff !important;
+.project .links .btn-ver:hover{background:#fff;color:#000}
+.btn-disabled{pointer-events:none;opacity:.65;filter:saturate(.6);cursor:not-allowed}
 
-  height: 26px;
-  padding: 0 10px;
-  border-radius: 999px;
-  line-height: 1;
-  letter-spacing: 1px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-
-  box-shadow: 0 4px 10px rgba(0,0,0,.25);
-  z-index: 10;
-  animation: proj-pulse 1.5s ease-in-out infinite;
-}
-
-/* mesma animação que você já usa */
-@keyframes proj-pulse{
-  0%{ transform: scale(1); }
-  50%{ transform: scale(1.05); }
-  100%{ transform: scale(1); }
-}
+/* ====== ESPAÇAMENTO SOBRE/EXPERIÊNCIA ====== */
+.about p,#experiencia p{margin-bottom:1rem;line-height:1.6}

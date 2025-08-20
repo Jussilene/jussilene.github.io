@@ -9,7 +9,7 @@
   <meta property="og:description" content="Suporte técnico N1/N2, atendimento B2B, CX e projetos web. Entre em contato via LinkedIn ou WhatsApp." />
   <meta property="og:type" content="website" />
   <link rel="icon" href="favicon.ico" />
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
 
   <style>
     :root{
@@ -109,6 +109,7 @@
     .label-date{
       color:#cfe7ff; font-weight:700; font-size:14px; letter-spacing:.3px;
       text-shadow:0 2px 6px rgba(0,0,0,.65);
+      position:absolute; top:12px; left:12px;
     }
 
     /* Botão "VER PROJETO" — simples com borda sutil */
@@ -121,13 +122,12 @@
     .btn-ver:hover,
     .btn-ver:focus-visible{color:#ff3b3b; border-color:#ff3b3b; background:rgba(255,59,59,.10)}
     .btn-ver:active{transform:translateY(1px)}
+    .btn-disabled{pointer-events:none;opacity:.65;filter:saturate(.6);cursor:not-allowed}
 
-    /* ------ CONTATO (restaurado ao estilo antigo) ------ */
+    /* ------ CONTATO ------ */
     .contact{display:grid; grid-template-columns: 1.1fr .9fr; gap:20px}
     @media (max-width:960px){.contact{grid-template-columns:1fr}}
-    /* aplica grid no form mesmo sem classe */
     #contato form{display:grid; gap:10px}
-    /* campos com o visual antigo */
     #contato input, #contato textarea{
       width:100%; background:#0e1420; border:1px solid rgba(255,255,255,.08);
       border-radius:10px; padding:12px; color:var(--text);
@@ -338,11 +338,25 @@
         </p>
 
         <div class="grid">
+          <!-- Suporte360 (EM BREVE) -->
+          <article class="card project">
+            <div class="projeto-card">
+              <img src="imagens/suporte360-logo.jpg" alt="Support360 — Plataforma de Atendimento com IA e Supervisão" />
+              <span class="label label-breve">EM BREVE</span>
+            </div>
+            <div class="content">
+              <h3>Suporte360 — Plataforma de Atendimento com IA e Supervisão</h3>
+              <p>Sistema de atendimento omnichannel com IA para respostas automáticas, fluxo humano assistido e painel de supervisão com métricas. MVP em construção.</p>
+              <div class="links">
+                <a class="btn-ver btn-disabled" href="#" aria-disabled="true">EM BREVE</a>
+              </div>
+            </div>
+          </article>
+
           <!-- Projeto 1 -->
           <article class="card project">
             <div class="projeto-card">
               <img src="imagens/projeto1.jpg" alt="Task Manager – Controle de Tarefas" />
-              <!-- data (somente texto) -->
               <span class="label label-date">14/08/2025</span>
             </div>
             <div class="content">
@@ -398,19 +412,28 @@
           <h2 class="section-title">Contato</h2>
           <p class="section-sub">Vamos conversar sobre oportunidades, freelas ou colaborações.</p>
 
-          <form action="https://formsubmit.co/jussilene.valim@gmail.com" method="POST">
-            <input type="text" name="_honey" style="display:none">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_subject" value="Contato via Portfólio – Jussilene">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="https://jussilene.github.io/?enviado=1#contato">
+          <form action="https://formsubmit.co/jussilene.valim@gmail.com" method="POST" accept-charset="UTF-8">
+  <!-- Anti-spam -->
+  <input type="text" name="_honey" style="display:none">
+  <input type="hidden" name="_captcha" value="false">
 
-            <input type="text"   name="nome"     placeholder="Seu nome"   required autocomplete="name">
-            <input type="email"  name="email"    placeholder="Seu e-mail" required autocomplete="email">
-            <textarea name="mensagem" placeholder="Escreva sua mensagem" required rows="6"></textarea>
+  <!-- Título do e-mail e redirecionamento após envio -->
+  <input type="hidden" name="_subject" value="Contato via Portfólio – Jussilene">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_next" value="https://jussilene.github.io/?enviado=1#contato">
 
-            <button type="submit" class="btn primary">Enviar</button>
-          </form>
+  <!-- Mensagem automática opcional para quem enviou -->
+  <input type="hidden" name="_autoresponse"
+         value="Oi! Recebi sua mensagem e vou responder em breve. — Jussilene">
+
+  <!-- Campos visíveis -->
+  <input type="text"   name="nome"     placeholder="Seu nome"   required autocomplete="name">
+  <input type="email"  name="email"    placeholder="Seu e-mail" required autocomplete="email">
+  <textarea name="mensagem" placeholder="Escreva sua mensagem" required rows="6"></textarea>
+
+  <button type="submit" class="btn primary">Enviar</button>
+</form>
+
 
           <p class="muted">Prefere WhatsApp? <a href="https://wa.me/5541998119767" target="_blank" rel="noopener">Clique aqui</a>.</p>
         </div>
