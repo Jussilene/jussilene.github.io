@@ -73,3 +73,13 @@ body{
 
 /* ====== ESPAÇAMENTO SOBRE/EXPERIÊNCIA ====== */
 .about p,#experiencia p{margin-bottom:1rem;line-height:1.6}
+
+/* Banner LumiFlux sem corte */
+.projeto-card img.banner-lumiflux{
+  height:160px;           /* mantém a mesma altura dos cards */
+  width:100%;
+  object-fit: contain !important; /* mostra a imagem inteira (força contra cover genérico) */
+  background:#0f1624;     /* cor do “letterbox” */
+  padding:8px;            /* respira um pouco dentro do card */
+  border-radius:12px 12px 0 0;
+}
