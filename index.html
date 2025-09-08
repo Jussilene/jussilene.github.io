@@ -9,20 +9,31 @@
   <meta property="og:description" content="Suporte técnico N1/N2, atendimento B2B, CX e projetos web. Entre em contato via LinkedIn ou WhatsApp." />
   <meta property="og:type" content="website" />
   <link rel="icon" href="favicon.ico" />
-  <link rel="stylesheet" href="style.css?v=7">
+
+  <!-- Fonte tech para títulos/botões -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css?v=9">
 
   <style>
     :root{
-      --bg:#0b0f14; --surface:#121823; --text:#e6edf3; --muted:#93a1b3;
-      --brand:#6be3ff; --brand-2:#a78bfa; --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius:18px;
+      /* NOVA PALETA: turquesa + magenta */
+      --bg:#0b0f14; --surface:#121823; --text:#e6edf3; --muted:#a2b6c9;
+      --brand:#00e6a8; --brand-2:#ff4fd8;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:18px; --glow:0 14px 36px rgba(0,230,168,.22);
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial;
-      background:linear-gradient(180deg,var(--bg),#0f1520 60%, #0c121d 100%);
+      background:
+        radial-gradient(900px 500px at 10% -10%, rgba(255,79,216,.12), transparent 60%),
+        radial-gradient(900px 500px at 100% -10%, rgba(0,230,168,.12), transparent 60%),
+        linear-gradient(180deg,var(--bg),#0f1520 60%, #0c121d 100%);
       color:var(--text)
     }
     a{color:inherit; text-decoration:none}
@@ -32,11 +43,13 @@
     /* NAV */
     .nav{position:sticky; top:0; z-index:1000; backdrop-filter: blur(10px); background:rgba(18,24,35,.6); border-bottom:1px solid rgba(255,255,255,.06)}
     .nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
-    .brand{display:flex; align-items:center; gap:10px; font-weight:700}
-    .dot{width:12px; height:12px; border-radius:50%; background:linear-gradient(135deg,var(--brand),var(--brand-2))}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700; font-family:'Sora',system-ui}
+    .dot{width:12px; height:12px; border-radius:50%; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:0 0 14px rgba(0,230,168,.5)}
     .nav ul{list-style:none; display:flex; gap:18px; margin:0; padding:0}
-    .nav a{opacity:.9}
+    .nav a{opacity:.85; position:relative}
+    .nav a::after{content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; border-radius:2px; background:linear-gradient(90deg,var(--brand),var(--brand-2)); transform:scaleX(0); transform-origin:left; transition:transform .25s ease}
     .nav a:hover{opacity:1}
+    .nav a:hover::after{transform:scaleX(1)}
     .menu-btn{display:none; background:transparent; border:1px solid rgba(255,255,255,.12); color:var(--text); padding:8px 10px; border-radius:10px}
     @media (max-width:840px){
       .nav ul{display:none}
@@ -48,19 +61,39 @@
     .hero{padding:72px 0 32px}
     .hero-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:32px; align-items:center}
     @media (max-width:960px){.hero-grid{grid-template-columns:1fr; text-align:center}}
-    .headline{font-size:clamp(28px,4vw,46px); line-height:1.1; margin:0 0 14px}
+    .headline{font-size:clamp(28px,4vw,46px); line-height:1.1; margin:0 0 14px; font-family:'Sora',system-ui}
     .subtitle{font-size:clamp(16px,1.4vw,18px); color:var(--muted); margin:0 0 26px}
 
-    /* CTA numa linha */
+    /* CTA com brilho no mouse */
     .cta{display:flex; gap:12px; flex-wrap:nowrap; overflow-x:auto; padding-bottom:2px}
-    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid rgba(255,255,255,.12); white-space:nowrap}
-    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#0b0f14; font-weight:700; border:none}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid rgba(255,255,255,.12); white-space:nowrap; background:rgba(255,255,255,.02); font-family:'Sora',system-ui; font-weight:600; position:relative; overflow:hidden}
+    .btn.primary{background:linear-gradient(90deg,var(--brand),var(--brand-2)); color:#0b0f14; font-weight:800; border:none; box-shadow:var(--glow)}
+    .btn::before{content:""; position:absolute; inset:-1px; background:radial-gradient(120px circle at var(--x,50%) var(--y,50%), rgba(0,230,168,.35), transparent 40%); opacity:0; transition:opacity .2s}
+    .btn:hover::before{opacity:1}
     .btn:hover{transform:translateY(-1px)}
     @media (max-width:960px){.cta{flex-wrap:wrap}}
 
-    .avatar{width:320px; border-radius:24px; border:2px solid rgba(255,255,255,.1); box-shadow:var(--shadow); background:#0e1420; overflow:hidden; margin-left:auto}
-    .avatar img{width:100%; height:auto; object-fit:contain}
+    /* ---- FOTO COMO NO PRINT ---- */
+    .avatar{
+      width:320px; border-radius:28px; padding:14px;
+      background:
+        linear-gradient(120deg, rgba(0,230,168,.95) 0%, rgba(0,230,168,.85) 34%,
+                         rgba(8,12,20,0) 36%, rgba(8,12,20,0) 64%,
+                         rgba(255,79,216,.85) 66%, rgba(255,79,216,.95) 100%);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 20px 60px rgba(0,0,0,.35);
+      overflow:hidden; margin-left:auto; position:relative;
+      background-color:#0e1420;
+    }
+    .avatar img{
+      width:100%; height:auto; object-fit:cover;
+      border-radius:20px;
+      /* recorte poligonal inspirado no print */
+      clip-path:polygon(18% 0, 74% 9%, 96% 50%, 80% 100%, 16% 100%, 4% 50%);
+      box-shadow:inset 0 0 60px rgba(0,0,0,.18);
+    }
     @media (max-width:960px){.avatar{margin:0 auto}}
+
     .card{background:rgba(18,24,35,.72); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); box-shadow:var(--shadow)}
     .hero-highlights{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; margin-top:26px}
     .pill{font-size:13px; color:var(--muted)}
@@ -68,7 +101,7 @@
 
     /* SECTIONS */
     section{padding:60px 0}
-    .section-title{font-size:26px; margin:0 0 18px}
+    .section-title{font-size:26px; margin:0 0 18px; font-family:'Sora',system-ui}
     .section-sub{color:var(--muted); margin:0 0 26px}
     .about p{color:#cfd6de; line-height:1.7}
     .timeline{display:grid; gap:16px}
@@ -82,18 +115,17 @@
     @media (max-width:960px){.grid{grid-template-columns: repeat(2, 1fr)}}
     @media (max-width:640px){.grid{grid-template-columns: 1fr}}
 
-    /* ------ PROJETOS (mantidos como você aprovou) ------ */
+    /* ------ PROJETOS (mantendo tamanhos) ------ */
     .project{overflow:hidden}
     .project img{height:160px; width:100%; object-fit:cover; border-bottom:1px solid rgba(255,255,255,.06)}
     .project .content{padding:14px}
-    .project h3{margin:4px 0 6px; font-size:18px}
+    .project h3{margin:4px 0 6px; font-size:18px; font-family:'Sora',system-ui}
     .project p{margin:0; color:#cfd6de; font-size:14px}
 
-    .projeto-card{position:relative; overflow:hidden; border-radius:12px; background:#0f1624}
+    .projeto-card{position:relative; overflow:hidden; border-radius:12px; background:#0f1624; box-shadow:0 10px 30px rgba(0,0,0,.35)}
     .projeto-card img{width:100%; display:block; border-radius:12px 12px 0 0; object-fit:cover}
     .projeto-card .label{position:absolute; top:12px; left:12px; z-index:10}
 
-    /* EM BREVE – menor, translúcido e pulsando */
     .label-breve{
       display:inline-flex; align-items:center; height:22px; padding:0 10px;
       border-radius:999px; letter-spacing:.5px; font-size:11px; font-weight:800;
@@ -105,22 +137,23 @@
       50%{transform:scale(1.04); box-shadow:0 6px 14px rgba(255,120,60,.28)}
       100%{transform:scale(1); box-shadow:0 4px 10px rgba(255,120,60,.18)}
     }
-    /* DATA – somente texto, sem cápsula */
     .label-date{
       color:#cfe7ff; font-weight:700; font-size:14px; letter-spacing:.3px;
       text-shadow:0 2px 6px rgba(0,0,0,.65);
       position:absolute; top:12px; left:12px;
     }
 
-    /* Botão "VER PROJETO" — simples com borda sutil */
+    /* Botões VER PROJETO (brilho seguindo o mouse) */
     .project .links{display:flex; justify-content:center; margin-top:14px}
     .btn-ver{
-      padding:10px 16px; border-radius:10px; font-weight:700;
+      padding:10px 16px; border-radius:12px; font-weight:800; font-family:'Sora',system-ui;
       border:1px solid rgba(255,255,255,.7); background:transparent; color:#fff;
-      transition:all .22s ease; box-shadow:0 6px 18px rgba(0,0,0,.18);
+      transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease, color .22s ease;
+      position:relative; overflow:hidden;
     }
-    .btn-ver:hover,
-    .btn-ver:focus-visible{color:#ff3b3b; border-color:#ff3b3b; background:rgba(255,59,59,.10)}
+    .btn-ver::before{content:""; position:absolute; inset:-1px; background:radial-gradient(140px circle at var(--x,50%) var(--y,50%), rgba(0,230,168,.35), transparent 45%); opacity:0; transition:opacity .2s}
+    .btn-ver:hover::before{opacity:1}
+    .btn-ver:hover{color:#0b0f14; border-color:transparent; background:linear-gradient(90deg,var(--brand),var(--brand-2)); box-shadow:0 12px 28px rgba(0,230,168,.25)}
     .btn-ver:active{transform:translateY(1px)}
     .btn-disabled{pointer-events:none;opacity:.65;filter:saturate(.6);cursor:not-allowed}
 
@@ -130,7 +163,7 @@
     #contato form{display:grid; gap:10px}
     #contato input, #contato textarea{
       width:100%; background:#0e1420; border:1px solid rgba(255,255,255,.08);
-      border-radius:10px; padding:12px; color:var(--text);
+      border-radius:12px; padding:12px; color:var(--text);
     }
     #contato textarea{min-height:120px; resize:vertical}
 
@@ -138,10 +171,45 @@
     .muted{color:var(--muted)}
     .row{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
     .sep{height:1px; background:rgba(255,255,255,.06); border:none; margin:26px 0}
+
+    /* Splash (boas-vindas) */
+    #splash{position:fixed; inset:0; z-index:2000; display:grid; place-items:center; background:
+      radial-gradient(1200px 600px at 20% -10%, rgba(255,79,216,.18), transparent 60%),
+      radial-gradient(1200px 600px at 100% -10%, rgba(0,230,168,.18), transparent 60%),
+      linear-gradient(180deg,#070b12,#0a0f1a 60%, #070b12 100%);
+      color:#e6faff; transition:opacity .6s ease;}
+    #splash .wrap{max-width:820px; text-align:center; padding:28px}
+    #splash h1{margin:0 0 10px; font-size:clamp(28px,5vw,48px); font-family:'Sora',system-ui; letter-spacing:.5px}
+    #splash p{margin:0 0 18px; color:#bcd1e8}
+    #enterBtn{padding:12px 18px; border-radius:12px; border:0; font-weight:800; font-family:'Sora',system-ui; cursor:pointer; background:linear-gradient(90deg,var(--brand),var(--brand-2)); color:#061018; box-shadow:var(--glow)}
+    #splash.hide{opacity:0; pointer-events:none}
+
+    /* 👋 Emoji acenando no splash (adição mínima) */
+    .wave{display:inline-block; transform-origin:70% 70%; animation:wave 1.6s ease-in-out infinite}
+    @keyframes wave{
+      0%{transform:rotate(0deg)}
+      15%{transform:rotate(14deg)}
+      30%{transform:rotate(-8deg)}
+      45%{transform:rotate(14deg)}
+      60%{transform:rotate(-4deg)}
+      75%{transform:rotate(10deg)}
+      100%{transform:rotate(0deg)}
+    }
+
+    /* Garantia: banner LumiFlux sem corte aqui também */
+    .projeto-card img.banner-lumiflux{height:160px; width:100%; object-fit:contain; background:#0f1624; padding:8px; border-radius:12px 12px 0 0}
   </style>
 </head>
 
 <body>
+  <!-- Splash de boas-vindas -->
+  <div id="splash" aria-hidden="true">
+    <div class="wrap">
+      <h1>Seja muito bem-vindo ao meu portfólio <span class="wave" aria-hidden="true">👋</span></h1>
+      <button id="enterBtn">Entrar</button>
+    </div>
+  </div>
+
   <!-- NAV -->
   <nav class="nav" id="top">
     <div class="container nav-wrap">
@@ -162,7 +230,7 @@
   <header class="hero">
     <div class="container hero-grid">
       <div>
-        <p class="pill">✨ Portfólio</p>
+        <p class="pill">Portfólio</p>
         <h1 class="headline">Olá! Eu sou <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent">Jussilene Valim Ribeiro</span>.</h1>
         <p class="subtitle">Suporte técnico N1/N2, CX e retenção com +10 anos de experiência. Em transição para tecnologia, desenvolvendo projetos web e automações. Aqui você encontra minha trajetória, projetos e contato.</p>
 
@@ -445,7 +513,6 @@
   <button type="submit" class="btn primary">Enviar</button>
 </form>
 
-
           <p class="muted">Prefere WhatsApp? <a href="https://wa.me/5541998119767" target="_blank" rel="noopener">Clique aqui</a>.</p>
         </div>
         <div class="card" style="padding:16px">
@@ -472,6 +539,27 @@
   document.getElementById('menu')?.addEventListener('click', (e) => {
     if (e.target.tagName === 'A') nav.classList.remove('open');
   });
+
+  // Splash fecha após 2.2s ou ao clicar
+  const splash = document.getElementById('splash');
+  const enterBtn = document.getElementById('enterBtn');
+  const closeSplash = () => splash.classList.add('hide');
+  setTimeout(closeSplash, 2200);
+  enterBtn?.addEventListener('click', closeSplash);
+  splash?.addEventListener('click', (e)=> { if(e.target === splash) closeSplash(); });
+
+  // Glow que segue o mouse (btns e btn-ver)
+  function attachGlow(selector){
+    document.querySelectorAll(selector).forEach(btn=>{
+      btn.addEventListener('mousemove', e=>{
+        const r = btn.getBoundingClientRect();
+        btn.style.setProperty('--x', (e.clientX - r.left) + 'px');
+        btn.style.setProperty('--y', (e.clientY - r.top) + 'px');
+      });
+    });
+  }
+  attachGlow('.btn');
+  attachGlow('.btn-ver');
 </script>
 
 <script>
