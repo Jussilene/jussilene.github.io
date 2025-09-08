@@ -297,3 +297,50 @@ body{
   .avatar,
   .wave{ animation: none !important; }
 }
+/* ===========================
+   AJUSTES DE MOBILE (somente)
+   =========================== */
+
+/* 1) CTA: botões centralizados e organizados em grid no mobile */
+@media (max-width: 720px){
+  .cta{
+    display: grid;                         /* troca o flex por grid só no mobile */
+    grid-template-columns: repeat(2, 1fr); /* duas colunas */
+    gap: 10px 12px;
+    justify-items: stretch;
+    align-items: stretch;
+    overflow: visible;                     /* evita corte lateral */
+    max-width: 520px;                      /* fica centrado visualmente */
+    margin: 0 auto;                        /* centraliza o bloco de botões */
+  }
+  .cta .btn{
+    width: 100%;
+    justify-content: center;               /* texto centralizado no botão */
+    text-align: center;
+  }
+}
+
+/* telas bem pequenas: empilha 1 por linha */
+@media (max-width: 380px){
+  .cta{
+    grid-template-columns: 1fr;
+    max-width: 360px;
+  }
+}
+
+/* 2) Cards de destaque: mesmos alinhamentos e largura no mobile */
+@media (max-width: 720px){
+  .hero-highlights{
+    grid-template-columns: 1fr;            /* uma coluna, largura total */
+    gap: 12px;
+  }
+  .hero-highlights .card{
+    text-align: center;                    /* título e conteúdo centralizados */
+    padding: 16px;                         /* mantém o mesmo padding */
+  }
+  .hero-highlights .card .row{
+    justify-content: center;               /* centraliza linhas com flex */
+    gap: 6px;
+    width: 100%;
+  }
+}
